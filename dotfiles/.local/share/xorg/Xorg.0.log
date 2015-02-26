@@ -1,0 +1,126 @@
+[508412.484] 
+X.Org X Server 1.17.1
+Release Date: 2015-02-10
+[508412.484] X Protocol Version 11, Revision 0
+[508412.484] Build Operating System: CYGWIN_NT-5.1 1.7.34(0.285/5/3) i686 Red Hat
+[508412.484] Current Operating System: CYGWIN_NT-6.3-WOW Stian-PC 1.7.34(0.285/5/3) 2015-02-04 12:12 i686
+[508412.484] Build Date: 23 February 2015  01:46:15PM
+[508412.484] Package: version 1.17.1-2 built 2015-02-23 
+[508412.484] Current version of pixman: 0.32.6
+[508412.484] 	Before reporting problems, check http://x.cygwin.com/
+	to make sure that you have the latest version.
+[508412.484] Markers: (--) probed, (**) from config file, (==) default setting,
+	(++) from command line, (!!) notice, (II) informational,
+	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+[508412.484] (==) Log file: "/home/Stian/.local/share/xorg/Xorg.0.log", Time: Thu Feb 26 10:28:04 2015
+[508412.484] (II) Loader magic: 0x545040
+[508412.484] (II) Module ABI versions:
+[508412.484] 	X.Org ANSI C Emulation: 0.4
+[508412.484] 	X.Org Video Driver: 19.0
+[508412.484] 	X.Org XInput driver : 21.0
+[508412.484] 	X.Org Server Extension : 9.0
+[508412.484] (==) Using default built-in configuration (21 lines)
+[508412.484] (==) --- Start of built-in configuration ---
+[508412.484] 	Section "Device"
+[508412.484] 		Identifier	"Builtin Default fbdev Device 0"
+[508412.484] 		Driver	"fbdev"
+[508412.484] 	EndSection
+[508412.484] 	Section "Screen"
+[508412.484] 		Identifier	"Builtin Default fbdev Screen 0"
+[508412.484] 		Device	"Builtin Default fbdev Device 0"
+[508412.500] 	EndSection
+[508412.500] 	Section "Device"
+[508412.500] 		Identifier	"Builtin Default vesa Device 0"
+[508412.500] 		Driver	"vesa"
+[508412.500] 	EndSection
+[508412.500] 	Section "Screen"
+[508412.500] 		Identifier	"Builtin Default vesa Screen 0"
+[508412.500] 		Device	"Builtin Default vesa Device 0"
+[508412.500] 	EndSection
+[508412.500] 	Section "ServerLayout"
+[508412.500] 		Identifier	"Builtin Default Layout"
+[508412.500] 		Screen	"Builtin Default fbdev Screen 0"
+[508412.500] 		Screen	"Builtin Default vesa Screen 0"
+[508412.500] 	EndSection
+[508412.500] (==) --- End of built-in configuration ---
+[508412.500] (==) ServerLayout "Builtin Default Layout"
+[508412.500] (**) |-->Screen "Builtin Default fbdev Screen 0" (0)
+[508412.500] (**) |   |-->Monitor "<default monitor>"
+[508412.500] (**) |   |-->Device "Builtin Default fbdev Device 0"
+[508412.500] (==) No monitor specified for screen "Builtin Default fbdev Screen 0".
+	Using a default monitor configuration.
+[508412.500] (**) |-->Screen "Builtin Default vesa Screen 0" (1)
+[508412.500] (**) |   |-->Monitor "<default monitor>"
+[508412.500] (**) |   |-->Device "Builtin Default vesa Device 0"
+[508412.500] (==) No monitor specified for screen "Builtin Default vesa Screen 0".
+	Using a default monitor configuration.
+[508412.500] (==) Not automatically adding devices
+[508412.500] (==) Not automatically enabling devices
+[508412.500] (==) Not automatically adding GPU devices
+[508412.500] (WW) The directory "/usr/share/fonts/misc/" does not exist.
+[508412.500] 	Entry deleted from font path.
+[508412.500] (WW) The directory "/usr/share/fonts/TTF/" does not exist.
+[508412.500] 	Entry deleted from font path.
+[508412.500] (WW) The directory "/usr/share/fonts/OTF/" does not exist.
+[508412.500] 	Entry deleted from font path.
+[508412.500] (WW) The directory "/usr/share/fonts/Type1/" does not exist.
+[508412.500] 	Entry deleted from font path.
+[508412.500] (WW) The directory "/usr/share/fonts/100dpi/" does not exist.
+[508412.500] 	Entry deleted from font path.
+[508412.500] (WW) The directory "/usr/share/fonts/75dpi/" does not exist.
+[508412.500] 	Entry deleted from font path.
+[508412.500] (==) FontPath set to:
+	
+[508412.500] (==) ModulePath set to "/usr/lib/xorg/modules"
+[508412.500] (==) |-->Input Device "<default pointer>"
+[508412.500] (==) |-->Input Device "<default keyboard>"
+[508412.500] (==) The core pointer device wasn't specified explicitly in the layout.
+	Using the default mouse configuration.
+[508412.500] (==) The core keyboard device wasn't specified explicitly in the layout.
+	Using the default keyboard configuration.
+[508412.500] (II) LoadModule: "glx"
+[508412.500] (II) Loading /usr/lib/xorg/modules/extensions/cygglx.dll
+[508412.500] (II) Module glx: vendor="X.Org Foundation"
+[508412.500] 	compiled for 1.17.1, module version = 1.0.0
+[508412.500] 	ABI class: X.Org Server Extension, version 9.0
+[508412.500] (==) AIGLX enabled
+[508412.500] (II) LoadModule: "fb"
+[508412.500] (II) Loading /usr/lib/xorg/modules/cygfb.dll
+[508412.500] (II) Module fb: vendor="X.Org Foundation"
+[508412.500] 	compiled for 1.17.1, module version = 1.0.0
+[508412.500] 	ABI class: X.Org ANSI C Emulation, version 0.4
+[508412.500] (II) LoadModule: "shadow"
+[508412.500] (II) Loading /usr/lib/xorg/modules/cygshadow.dll
+[508412.500] (II) Module shadow: vendor="X.Org Foundation"
+[508412.500] 	compiled for 1.17.1, module version = 1.1.0
+[508412.500] 	ABI class: X.Org ANSI C Emulation, version 0.4
+[508412.500] (II) LoadModule: "fbdev"
+[508412.500] (WW) Warning, couldn't open module fbdev
+[508412.500] (II) UnloadModule: "fbdev"
+[508412.500] (II) Unloading fbdev
+[508412.500] (EE) Failed to load module "fbdev" (module does not exist, 0)
+[508412.500] (II) LoadModule: "vesa"
+[508412.515] (WW) Warning, couldn't open module vesa
+[508412.515] (II) UnloadModule: "vesa"
+[508412.515] (II) Unloading vesa
+[508412.515] (EE) Failed to load module "vesa" (module does not exist, 0)
+[508412.515] (II) LoadModule: "mouse"
+[508412.515] (WW) Warning, couldn't open module mouse
+[508412.515] (II) UnloadModule: "mouse"
+[508412.515] (II) Unloading mouse
+[508412.515] (EE) Failed to load module "mouse" (module does not exist, 0)
+[508412.515] (II) LoadModule: "kbd"
+[508412.515] (WW) Warning, couldn't open module kbd
+[508412.515] (II) UnloadModule: "kbd"
+[508412.515] (II) Unloading kbd
+[508412.515] (EE) Failed to load module "kbd" (module does not exist, 0)
+[508412.515] (EE) No drivers available.
+[508412.515] (EE) Fatal server error:
+[508412.515] (EE) no screens found(EE) 
+[508412.515] (EE) 
+Please consult the The Cygwin/X Project support 
+	 at http://x.cygwin.com/
+ for help. 
+[508412.515] (EE) Please also check the log file at "/home/Stian/.local/share/xorg/Xorg.0.log" for additional information.
+[508412.515] (EE) 
+[508412.515] (EE) Server terminated with error (1). Closing log file.

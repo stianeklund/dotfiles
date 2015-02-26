@@ -1,0 +1,4 @@
+/usr/bin/apt-cyg
+/home/Stian/.tmux.conf
+/home/Stian/.zshrc
+/home/Stian/.vimrc
