@@ -30,6 +30,11 @@ for file in $files; do
     mv ~/$file $olddir/
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
+
+# grab Vundle from github workaround because I can't get it working from within my repo
+echo "Grabbing Vundle for you.."
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 done
 
-# zsh prezto.sh
+
+
