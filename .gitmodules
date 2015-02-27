@@ -7,3 +7,9 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
+[submodule ".zprezto"]
+	path = .zprezto
+	url = git://github.com/sorin-ionescu/prezto.git
+[submodule "powerline-fonts"]
+	path = powerline-fonts
+	url = git://github.com/powerline/fonts.git
