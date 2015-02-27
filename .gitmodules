@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/Vundle.vim"]
 	path = .vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim
+[submodule "/home/Stian/.dotfiles/.vim/bundle/Vundle.vim"]
+	path = /home/Stian/.dotfiles/.vim/bundle/Vundle.vim
+	url = https://github.com/gmarik/Vundle.vim.git
