@@ -1,2 +1,2 @@
-![](https://raw.githubusercontent.com/stianeklund/dotfiles/master/.screenshot.png)
+![](https://raw.githubusercontent.com/stianeklund/dotfiles/master/.screenshot.PNG)
 
