@@ -2,7 +2,7 @@
 ## Installation
 ``` bash
 $ cd ~
-$ git clone https://github.com/stianeklund/dotfiles.git .
-$ ./script/install.sh
+$ git clone https://github.com/stianeklund/dotfiles.git .dotfiles
+$ ./dotfiles/script/install.sh
 ```
 
