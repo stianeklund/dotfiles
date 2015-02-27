@@ -1,0 +1,9 @@
+[submodule "prezto"]
+	path = prezto
+	url = git://github.com/sorin-ionescu/prezto
+[submodule "fonts"]
+	path = fonts
+	url = git://github.com/powerline/fonts.git
+[submodule "solarized"]
+	path = solarized
+	url = git://github.com/altercation/solarized.git
