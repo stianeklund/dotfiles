@@ -7,8 +7,9 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files=".gitconfig .vimrc.bundles.local .vimrc.local .vimrc.bundles.local .vsvimrc .zprezto 
-.vimrc .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc .tmux.conf"
+files=".gitconfig .vsvimrc .vim .zprezto .oh-my-zsh .zprezto .zsh
+.vimrc .pryrc .irbrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc 
+.tmux.conf"
 
 
 ##########
