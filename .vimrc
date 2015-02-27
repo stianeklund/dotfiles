@@ -43,18 +43,30 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 syntax enable
 set background=dark
+"
+" solarized additions
 colorscheme solarized
+let g:solarized_termcolors = 256
+let g:solarized_visability = "high"
+let g:solarized_termtrans = 0
+let g:solarized_contrast = "high"
 "
 " Enable syntastic statusline changes
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
+"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+if &term =~ '256color'
+	" disable Background Color Erase (BCE) so that color schemes
+	" render properly when inside 256-color tmux and GNU screen.
+	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+	set t_ut=
+endif
+"
 " Fix for colemak.vim keymap collision. tpope/vim-fugitive's maps y<C-G>
 " and colemak.vim maps 'y' to 'w' (word). In combination this stalls 'y'
 " because Vim must wait to see if the user wants to press <C-G> as well.
