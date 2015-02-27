@@ -1,4 +1,3 @@
-
 #/bin/sh
 
 # This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
@@ -8,8 +7,8 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-
-files=".gitconfig .vimrc.bundles.local .vimrc.local .vimrc.bundles.local .vsvimrc .zprezto .oh-my-zsh .dir_colors .tmux.conf .minttyrc .githelpers .lesskey"
+files=".gitconfig .vimrc.bundles.local .vimrc.local .vimrc.bundles.local .vsvimrc .zprezto 
+.vimrc .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc .tmux.conf"
 
 
 ##########
@@ -26,8 +25,10 @@ echo "...done"
 
 # move any existing .dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $files; do
-	    echo "Moving any existing dotfiles from ~ to $olddir"
-	        mv ~/$file $olddir/
-		    echo "Creating symlink to $file in home directory."
-		        ln -s $dir/$file ~/$file
-		done
+    echo "Moving any existing dotfiles from ~ to $olddir"
+    mv ~/$file $olddir/
+    echo "Creating symlink to $file in home directory."
+    ln -s $dir/$file ~/$file
+done
+
+# zsh prezto.sh
