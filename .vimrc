@@ -19,11 +19,14 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
+"
+"	
 " The sparkup vim script is in a subdirectory of this repo called vim.
+"
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
+" Colemak plugin
+Plugin 'git://github.com/jooize/vim-colemak.git'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
