@@ -34,7 +34,8 @@ done
 # grab Vundle from github workaround because I can't get it working from within my repo
 echo "Grabbing Vundle for you.."
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
+echo "Running Vim PluginInstall"
+vim +PluginInstall +qall
 
 
 
