@@ -25,3 +25,6 @@
 [submodule "/home/Stian/.dotfiles/.vim/bundle/Vundle.vim"]
 	path = /home/Stian/.dotfiles/.vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = git@github.com:altercation/vim-colors-solarized.git
