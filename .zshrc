@@ -23,7 +23,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -45,15 +45,13 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
+plugins=(git ruby tmux colemak colorize)
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
-
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -76,29 +74,10 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-if [[ "$TERM" != "screen" ]] && 
-        [[ "$SSH_CONNECTION" == "" ]]; then
-    # Attempt to discover a detached session and attach 
-    # it, else create a new session
-
-    WHOAMI=$(whoami)
-    if tmux has-session -t $WHOAMI 2>/dev/null; then
-        tmux -2 attach-session -t $WHOAMI
-    else
-        tmux -2 new-session -s $WHOAMI
-    fi
-else
-
-    # One might want to do other things in this case, 
-    # here I print my motd, but only on servers where 
-    # one exists
-
-    # If inside tmux session then print MOTD
-    MOTD=/etc/motd.tcl
-    if [ -f $MOTD ]; then
-        $MOTD
-    fi
-fi
+#alias zshconfig="mate ~/.zshrc"
+#alias ohmyzsh="mate ~/.oh-my-zshes for Tmux
+alias tmux='tmux -2'
+alias ta='tmux attach -t'
+alias tnew='tmux new -s'
+alias tls='tmux ls'
+alias tkill='tmux kill-session -t'
