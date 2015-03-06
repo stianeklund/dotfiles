@@ -1,9 +1,9 @@
-
 # Dark 256 color solarized theme for the color GNU ls utility.
 # Used and tested with dircolors (GNU coreutils) 8.5
 #
 # @author  {@link http://sebastian.tramp.name Sebastian Tramp}
-# @license http://sam.zoy.org/wtfpl/  Do What The Fuck You Want To Public License (WTFPL)
+# @license http://sam.zoy.org/wtfpl/  Do What The Fuck You Want To 
+Public License (WTFPL)
 #
 # More Information at
 # https://github.com/seebi/dircolors-solarized
@@ -26,6 +26,8 @@ TERM cons25
 TERM console
 TERM cygwin
 TERM dtterm
+TERM dvtm
+TERM dvtm-256color
 TERM eterm-color
 TERM fbterm
 TERM gnome
@@ -76,7 +78,8 @@ TERM xterm-termite
 #
 # standard colors
 #
-# Below are the color init strings for the basic file types. A color init
+# Below are the color init strings for the basic file types. A color 
+# init
 # string consists of one or more of the following numeric codes:
 # Attribute codes:
 # 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
@@ -87,7 +90,8 @@ TERM xterm-termite
 #
 #
 # 256 color support
-# see here: http://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html)
+# see here: 
+# http://www.mail-archive.com/bug-coreutils@gnu.org/msg11030.html)
 #
 # Text 256 color coding:
 # 38;5;COLOR_NUMBER
@@ -115,7 +119,7 @@ CAPABILITY 30;41 # file with capability
 STICKY_OTHER_WRITABLE 48;5;64;38;5;230 # dir that is sticky and other-writable (+t,o+w)
 OTHER_WRITABLE 48;5;235;38;5;33 # dir that is other-writable (o+w) and not sticky
 STICKY 48;5;33;38;5;230 # dir with the sticky bit set (+t) and not other-writable
-# This is for files with execute permission:
+# This is for files with execute permission::
 EXEC 00;38;5;64
 
 ## Archives or compressed (violet + bold for compression)
@@ -166,6 +170,7 @@ EXEC 00;38;5;64
 .tif    00;38;5;136
 .tiff   00;38;5;136
 .png    00;38;5;136
+.PNG    00;38;5;136
 .svg    00;38;5;136
 .svgz   00;38;5;136
 .mng    00;38;5;136
@@ -180,7 +185,7 @@ EXEC 00;38;5;64
 .CR2    00;38;5;136
 .ico    00;38;5;136
 
-# Files of special interest (base1 + bold)
+# Files of special interest (base1)
 .tex             00;38;5;245
 .rdf             00;38;5;245
 .owl             00;38;5;245
@@ -191,6 +196,7 @@ EXEC 00;38;5;64
 .xml             00;38;5;245
 *Makefile        00;38;5;245
 *Rakefile        00;38;5;245
+*Dockerfile      00;38;5;245
 *build.xml       00;38;5;245
 *rc              00;38;5;245
 *1               00;38;5;245
@@ -207,6 +213,8 @@ EXEC 00;38;5;64
 .c               00;38;5;245
 .cpp             00;38;5;245
 .cc              00;38;5;245
+.sqlite          00;38;5;245
+.go              00;38;5;245
 
 # "unimportant" files as logs and backups (base01)
 .log        00;38;5;240
@@ -252,6 +260,7 @@ EXEC 00;38;5;64
 
 # Video formats (as audio + bold)
 .mov    00;38;5;166
+.MOV    00;38;5;166
 .mpg    00;38;5;166
 .mpeg   00;38;5;166
 .m2v    00;38;5;166
@@ -280,5 +289,3 @@ EXEC 00;38;5;64
 .anx 00;38;5;166
 .ogv 00;38;5;166
 .ogx 00;38;5;166
-
-
