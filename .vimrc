@@ -4,7 +4,7 @@ set backspace=2
 set tabstop=4
 set shiftwidth=4
 set expandtab
-filetype off                  " required
+filetype on                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -19,7 +19,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'git://github.com/jooize/vim-colemak.git'
+" Plugin 'git://github.com/jooize/vim-colemak.git' # Disabled because it screws up other stuff
 Plugin 'git://github.com/tpope/vim-surround' 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -61,13 +61,12 @@ if &term =~ '256color'
 	set t_ut=
 endif
 "
-" Fix for colemak.vim keymap collision. tpope/vim-fugitive's maps y<C-G>
-" and colemak.vim maps 'y' to 'w' (word). In combination this stalls 'y'
-" because Vim must wait to see if the user wants to press <C-G> as well.
-augroup RemoveFugitiveMappingForColemak
-	autocmd!
-	autocmd BufEnter * silent! execute "nunmap <buffer> <silent> y<C-G>"
-augroup END
-
-" Reload colemak.vim to remap any overridden keys
-silent! source "$HOME/.vim/bundle/vim-colemak/plugin/colemak.vim"
+" colemak remapping
+noremap n j|noremap <C-w>n <C-w>j|noremap <C-w><C-n> <C-w>j
+noremap e k|noremap <C-w>e <C-w>k|noremap <C-w><C-e> <C-w>k
+noremap s h
+noremap t l
+noremap f e
+noremap k n
+noremap K N 
+noremap U <C-r>
