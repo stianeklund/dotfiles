@@ -1,18 +1,21 @@
 set nocompatible              " be iMproved, required
 set number
 set backspace=2
-set tabstop=4
-set shiftwidth=4
 set expandtab
-filetype off                  " required
-
+set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
+set expandtab
+filetype on                  " required
+filetype indent on
+filetype plugin on
+"
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call pathogen#helptags()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
-
+"
 execute pathogen#infect()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -21,6 +24,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'git://github.com/jooize/vim-colemak.git'
 Plugin 'git://github.com/tpope/vim-surround' 
+"
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -60,14 +64,24 @@ if &term =~ '256color'
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 	set t_ut=
 endif
-"
-" Fix for colemak.vim keymap collision. tpope/vim-fugitive's maps y<C-G>
-" and colemak.vim maps 'y' to 'w' (word). In combination this stalls 'y'
-" because Vim must wait to see if the user wants to press <C-G> as well.
-augroup RemoveFugitiveMappingForColemak
-	autocmd!
-	autocmd BufEnter * silent! execute "nunmap <buffer> <silent> y<C-G>"
-augroup END
 
-" Reload colemak.vim to remap any overridden keys
-silent! source "$HOME/.vim/bundle/vim-colemak/plugin/colemak.vim"
+" highlight trailing spaces in annoying red
+highlight ExtraWhitespace ctermbg=1 guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+"
+" colemak remapping
+noremap n j|noremap <C-w>n <C-w>j|noremap <C-w><C-n> <C-w>j
+noremap e k|noremap <C-w>e <C-w>k|noremap <C-w><C-e> <C-w>k
+noremap s h
+noremap t l
+noremap f e
+noremap k n
+noremap K N
+noremap U <C-r>
+
+
+
