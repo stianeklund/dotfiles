@@ -1,29 +1,29 @@
 set nocompatible              " be iMproved, required
 set number
-set backspace=2
-set tabstop=4
-set shiftwidth=4
 set expandtab
-filetype on                  " required
+set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
+set expandtab
+set nowrap
 
+filetype on                  " required
+filetype indent on
+filetype plugin on
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call pathogen#helptags()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
 execute pathogen#infect()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Plugin 'git://github.com/jooize/vim-colemak.git' # Disabled because it screws up other stuff
-Plugin 'git://github.com/tpope/vim-surround' 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plugin 'git://github.com/tpope/vim-surround'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+call vundle#end()
+" filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -33,17 +33,22 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 syntax enable
 set background=dark
-"
-" solarized additions
-colorscheme solarized
+
+" Solarized additions
 let g:solarized_termcolors = 256
 let g:solarized_visability = "high"
 let g:solarized_termtrans = 0
 let g:solarized_contrast = "high"
+" Solarized light/dark based on time of day
+let hour = strftime("%H")
+if 6 <= hour && hour < 18
+  set background=light
+  else
+    set background=dark
+  endif
+  colorscheme solarized
 "
 " Enable syntastic statusline changes
 set statusline+=%#warningmsg#
@@ -60,7 +65,20 @@ if &term =~ '256color'
 	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
 	set t_ut=
 endif
-"
+
+" vim-ruby
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+" highlight trailing spaces in annoying red
+highlight ExtraWhitespace ctermbg=1 guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
 " colemak remapping
 noremap n j|noremap <C-w>n <C-w>j|noremap <C-w><C-n> <C-w>j
 noremap e k|noremap <C-w>e <C-w>k|noremap <C-w><C-e> <C-w>k
@@ -68,5 +86,5 @@ noremap s h
 noremap t l
 noremap f e
 noremap k n
-noremap K N 
+noremap K N
 noremap U <C-r>
