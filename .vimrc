@@ -22,7 +22,11 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'git://github.com/tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/syntastic'
 call vundle#end()
+
+
+
 " filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
