@@ -1,8 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 # Pretty colors
-# set -g default-terminal "screen-256color"
-set -g default-terminal "screen-256color screen mutt"
+set -g default-terminal "screen-256color"
+#set -g default-terminal "screen-256color screen"
 # Oh my ZSH theme
 ZSH_THEME="chris"
 
