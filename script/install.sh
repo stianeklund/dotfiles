@@ -8,8 +8,8 @@
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
 files=".gitconfig .vsvimrc .vim .zprezto .oh-my-zsh .zprezto .zsh
-.vimrc .pryrc .irbrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc 
-.tmux.conf"
+.vimrc .pryrc .irbrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc
+tmux.conf"
 
 
 ##########
@@ -24,7 +24,7 @@ echo "Changing to the $dir directory"
 cd $dir
 echo "...done"
 
-# move any existing .dotfiles in homedir to dotfiles_old directory, then create symlinks 
+# move any existing .dotfiles in homedir to dotfiles_old directory, then create symlinks
 for file in $files; do
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/$file $olddir/
