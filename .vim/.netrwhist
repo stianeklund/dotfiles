@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/usr/home/stian/.vim'
 let g:netrw_dirhist_2='/usr/home/stian/.zsh'
 let g:netrw_dirhist_3='/usr/home/stian/.config'
+let g:netrw_dirhist_4='/usr/home/stian/.weechat'
+let g:netrw_dirhist_5='/usr/home/stian/.weechat/python'
+let g:netrw_dirhist_6='/usr/home/stian/.weechat/python/autoload'
