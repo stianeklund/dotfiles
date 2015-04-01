@@ -35,16 +35,10 @@ call vundle#end()
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 syntax enable
+let g:solarized_termcolors=256
+set t_Co=256
 set background=dark
-" colorscheme solarized # Disabled because I'm bored of it.
-colorscheme base16-railscasts
-
-" Solarized additions
-" let g:solarized_termcolors = 256
-" let g:solarized_visability = "high"
-" let g:solarized_termtrans = 0
-" let g:solarized_contrast = "high"
-
+colorscheme solarized
 " Enable syntastic statusline changes
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -54,13 +48,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-" Disable BCE for better 256 color support
-if &term =~ '256color'
-" disable Background Color Erase (BCE) so that color schemes
-" render properly when inside 256-color tmux and GNU screen.
-" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
-endif
 
 " vim-ruby
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
