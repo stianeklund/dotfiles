@@ -16,8 +16,8 @@ alias less='less -R'
 # Plugins
 plugins=(git ruby tmux colemak colorize)
 # User configuration
-
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+echo 'export PATH="/usr/local/bin:$PATH"'
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
