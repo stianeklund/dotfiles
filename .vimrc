@@ -22,7 +22,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'git://github.com/tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/syntastic'
+Plugin 'git://github.com/scrooloose/syntastic.git'
 call vundle#end()
 " filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -61,10 +61,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 if &term =~ '256color'
-	" disable Background Color Erase (BCE) so that color schemes
-	" render properly when inside 256-color tmux and GNU screen.
-	" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-	set t_ut=
+        " disable Background Color Erase (BCE) so that color schemes
+        " render properly when inside 256-color tmux and GNU screen.
+        " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+        set t_ut=
 endif
 
 " vim-ruby
@@ -89,3 +89,4 @@ noremap f e
 noremap k n
 noremap K N
 noremap U <C-r>
+
