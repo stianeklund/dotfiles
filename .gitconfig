@@ -5,3 +5,6 @@
 	helper = cache
 [remote "origin"]
 	receivepack = git receive-pack
+[github]
+	user = stianeklund
+	token = c4cd228881d9fb85d5b7c9ba4c36ea49fccabdd2
