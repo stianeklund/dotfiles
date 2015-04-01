@@ -43,7 +43,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 # tmux aliases
 alias tmux='tmux -2'
-alias ta='tmux attach -d'
+alias ta='tmux attach'
 alias tnew='tmux new -s'
 alias tls='tmux ls'
 alias tkill='tmux kill-session -t'
