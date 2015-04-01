@@ -25,7 +25,7 @@ Plugin 'git://github.com/tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'git://github.com/scrooloose/syntastic.git'
-
+Plugin 'chriskempson/base16-vim'
 call vundle#end()
 
 " Brief help
@@ -36,13 +36,16 @@ call vundle#end()
 
 syntax enable
 set background=dark
-colorscheme solarized
+" colorscheme solarized # Disabled because I'm bored of it.
+colorscheme base16-railscasts
+let base16colorspace=256
+set  t_Co=256
 
 " Solarized additions
-let g:solarized_termcolors = 256
-let g:solarized_visability = "high"
-let g:solarized_termtrans = 0
-let g:solarized_contrast = "high"
+" let g:solarized_termcolors = 256
+" let g:solarized_visability = "high"
+" let g:solarized_termtrans = 0
+" let g:solarized_contrast = "high"
 
 " Enable syntastic statusline changes
 set statusline+=%#warningmsg#
