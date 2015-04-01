@@ -38,8 +38,6 @@ syntax enable
 set background=dark
 " colorscheme solarized # Disabled because I'm bored of it.
 colorscheme base16-railscasts
-let base16colorspace=256
-set  t_Co=256
 
 " Solarized additions
 " let g:solarized_termcolors = 256
