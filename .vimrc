@@ -24,9 +24,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/syntastic'
 call vundle#end()
-
-
-
 " filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
