@@ -9,11 +9,13 @@ set nowrap
 filetype on                  " required
 filetype indent on
 filetype plugin on
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call pathogen#helptags()
 execute pathogen#infect()
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
@@ -23,49 +25,40 @@ Plugin 'git://github.com/tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'git://github.com/scrooloose/syntastic.git'
+
 call vundle#end()
-" filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
+
 syntax enable
 set background=dark
+colorscheme solarized
 
 " Solarized additions
 let g:solarized_termcolors = 256
 let g:solarized_visability = "high"
 let g:solarized_termtrans = 0
 let g:solarized_contrast = "high"
-" Solarized light/dark based on time of day
-let hour = strftime("%H")
-if 6 <= hour && hour < 18
-  set background=light
-  else
-    set background=dark
-  endif
-  colorscheme solarized
-"
+
 " Enable syntastic statusline changes
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+" Disable BCE for better 256 color support
 if &term =~ '256color'
-        " disable Background Color Erase (BCE) so that color schemes
-        " render properly when inside 256-color tmux and GNU screen.
-        " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-        set t_ut=
+" disable Background Color Erase (BCE) so that color schemes
+" render properly when inside 256-color tmux and GNU screen.
+" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+  set t_ut=
 endif
 
 " vim-ruby
