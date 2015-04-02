@@ -26,7 +26,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'git://github.com/scrooloose/syntastic.git'
 Plugin 'git://github.com/morhetz/gruvbox.git'
-
 call vundle#end()
 
 " Brief help
@@ -40,6 +39,7 @@ let g:solarized_termcolors=256
 set t_Co=256
 set background=dark
 colorscheme gruvbox
+
 " Enable syntastic statusline changes
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
