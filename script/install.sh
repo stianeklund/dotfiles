@@ -9,7 +9,7 @@ dir=~/.dotfiles
 olddir=~/.dotfiles_old
 files=".gitconfig .vsvimrc .vim .zprezto .oh-my-zsh .zprezto .zsh
 .vimrc .pryrc .irbrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc
-tmux.conf"
+tmux.conf .pentadactylrc"
 
 
 ##########

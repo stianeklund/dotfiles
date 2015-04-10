@@ -4,7 +4,7 @@ export ZSH=$HOME/.oh-my-zsh
 set -g default-terminal "screen-256color"
 #set -g default-terminal "screen-256color screen"
 # Oh my ZSH theme
-ZSH_THEME="chris"
+ZSH_THEME="robbyrussell"
 
 ENABLE_CORRECTION="true"
 
