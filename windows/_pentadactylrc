@@ -15,13 +15,17 @@ colorscheme gruvbox-dark
 set scroll=7
 set scrollsteps=20
 set scrolltime=200
+
+"make j and k move faster
+map -modes=n,v n -builtin 5j
+map -modes=n,v e -builtin 5k
+
+" leader
 map <Leader>f f
 
 " colemak
 noremap h <Nop>
 noremap H <Nop>
-noremap N 3j
-noremap E 3k
 noremap n j
 noremap e k
 noremap s h
@@ -29,6 +33,7 @@ noremap t l
 " noremap f e
 noremap k n
 noremap K N
+
 " set hintkeys to colemak homerow
 set hintkeys=arstneio
 set titlestring="Firefox ❤  Vim"
