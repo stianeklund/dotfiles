@@ -73,3 +73,5 @@ noremap k n
 noremap K N
 noremap U <C-r>
 
+" change the mapleader from \ to ,
+let mapleader=","
