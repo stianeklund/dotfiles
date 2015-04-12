@@ -32,6 +32,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'morhetz/gruvbox.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'lokaltog/vim-easymotion'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
 call vundle#end()
 
 " Brief help
