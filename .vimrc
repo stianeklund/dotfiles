@@ -9,7 +9,7 @@ set nowrap
 " Mapleader from \ to ,
 let mapleader=","
 
-filetype on                  " required
+filetype off " required
 filetype indent plugin on
 
 " Set the runtime path to include Vundle and initialize
