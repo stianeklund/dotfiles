@@ -20,14 +20,16 @@ execute pathogen#infect()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
+
+" My plugins
 Plugin 'tpope/vim-fugitive'
-Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'git://github.com/tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'git://github.com/scrooloose/syntastic.git'
-Plugin 'git://github.com/morhetz/gruvbox.git'
+Plugin 'scrooloose/syntastic'
+Plugin 'morhetz/gruvbox.git'
+Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
 " Brief help
@@ -46,6 +48,8 @@ colorscheme gruvbox
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+" Syntastic checking
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
