@@ -3,8 +3,7 @@
 	name = Stian Eklund
 
 [credential]
-helper = !'C:\\Users\\Stian\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
-
+      helper = !"`sh -c 'source ~/.githelpers && run_credential_helper'`"
 [remote "origin"]
 	receivepack = git receive-pack
 
