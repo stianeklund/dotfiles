@@ -73,7 +73,7 @@ Return
     ^Down::
     Send {WheelDown}
     return
-#IfWinActive 
+#IfWinActive
 
 ; Toggle normal/alternative keyboard layers
 <^>!l::SetKeyboardLayer(0)
