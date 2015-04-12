@@ -34,6 +34,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'lokaltog/vim-easymotion'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-projectionist'
 call vundle#end()
 
 " Brief help
