@@ -1,5 +1,4 @@
 set nocompatible              " be iMproved, required
-" set number
 set relativenumber
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
