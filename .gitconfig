@@ -1,10 +1,13 @@
 [user]
 	email = stian.eklund@gmail.com
 	name = Stian Eklund
+
 [credential]
-	helper = cache
+helper = !'C:\\Users\\Stian\\AppData\\Roaming\\GitCredStore\\git-credential-winstore.exe'
+
 [remote "origin"]
 	receivepack = git receive-pack
+
 [github]
 	user = stianeklund
 	token = c4cd228881d9fb85d5b7c9ba4c36ea49fccabdd2
