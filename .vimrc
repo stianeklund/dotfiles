@@ -6,13 +6,13 @@ set autoindent
 set expandtab
 set nowrap
 
-" change the mapleader from \ to ,
+" Mapleader from \ to ,
 let mapleader=","
 
 filetype on                  " required
 filetype indent plugin on
 
-" set the runtime path to include Vundle and initialize
+" Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 call pathogen#helptags()
@@ -56,12 +56,12 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 
-" vim-ruby
+" Vim-Ruby
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
-" highlight trailing spaces in annoying red
+" Highlight trailing spaces in annoying red
 highlight ExtraWhitespace ctermbg=1 guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -69,7 +69,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" colemak remapping
+" Colemak remapping
 noremap n j|noremap <C-w>n <C-w>j|noremap <C-w><C-n> <C-w>j
 noremap e k|noremap <C-w>e <C-w>k|noremap <C-w><C-e> <C-w>k
 noremap s h
@@ -78,3 +78,8 @@ noremap f e
 noremap k n
 noremap K N
 noremap U <C-r>
+noremap j <Nop>
+
+" NERDTree changes for colemak
+" Default ( "e"), interferes with navigation
+let g:NERDTreeMapOpenExpl = "j"
