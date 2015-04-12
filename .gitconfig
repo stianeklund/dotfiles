@@ -3,7 +3,8 @@
 	name = Stian Eklund
 
 [credential]
-      helper = !"`sh -c 'source ~/.githelpers && run_credential_helper'`"
+  helper = !"`sh -c 'source ~/.githelpers && run_credential_helper'`"
+
 [remote "origin"]
 	receivepack = git receive-pack
 
