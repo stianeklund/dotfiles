@@ -5,6 +5,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 set autoindent
 set expandtab
 set nowrap
+set mouse=a
 
 " Mapleader from \ to ,
 let mapleader=","
@@ -82,9 +83,12 @@ noremap U <C-r>
 noremap j <Nop>
 
 " NERDTree changes for colemak
-" Default ( "e"), interferes with navigation
+" Default ("e"), interferes with navigation
 let g:NERDTreeMapOpenExpl = "j"
 
 " Start NERDTree if no files are specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Easymotion
+map <Leader> <Plug>(easymotion-prefix)
