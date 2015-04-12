@@ -30,6 +30,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/syntastic'
 Plugin 'morhetz/gruvbox.git'
 Plugin 'scrooloose/nerdtree'
+Plugin 'lokaltog/vim-easymotion'
 call vundle#end()
 
 " Brief help
