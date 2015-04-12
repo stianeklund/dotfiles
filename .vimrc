@@ -1,14 +1,16 @@
 set nocompatible              " be iMproved, required
 set relativenumber
 set expandtab
-set tabstop=2 shiftwidth=2 softtabstop=2
+set tabstop=4 shiftwidth=4 softtabstop=4
 set autoindent
 set expandtab
 set nowrap
 
+" change the mapleader from \ to ,
+let mapleader=","
+
 filetype on                  " required
-filetype indent on
-filetype plugin on
+filetype indent plugin on
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -72,6 +74,3 @@ noremap f e
 noremap k n
 noremap K N
 noremap U <C-r>
-
-" change the mapleader from \ to ,
-let mapleader=","
