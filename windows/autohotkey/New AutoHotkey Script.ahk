@@ -25,6 +25,14 @@ GroupAdd, ConsoleWindowGroup, ahk_class mintty
 Send !{Space}ep
 return
 
+#IfWinActive
+RAlt & x::Send !{f4}
+Return
+
+#IfWinActive
+RAlt & m::WinMinimize, A
+Return
+
 ; Msys2
 #IfWinActive ahk_class mintty
     ; Paste in command window
@@ -33,12 +41,14 @@ return
     return
 
 #if (!WinActive("ahk_class mintty"))
-^W:: ;;Delete previous word
-    Send ^+{Left}+{Left}
-    Loop, 5 {
-        Send {Del}
-	}
+^W::Send,+{Home}{Delete} ;;Delete previous word
 Return
+
+#if (!WinActive("ahk_class mintty"))
+RAlt & t::AltTab
+
+#if (!WinActive("ahk_class mintty"))
+RAlt & s::ShiftAltTab
 
 #if (!WinActive("ahk_class mintty"))
 ^U::   ;;erase to start of line
@@ -125,7 +135,7 @@ SetKeyboardLayer(layer)
 {
     global keyboardLayer
     keyboardLayer := layer
-    if (layer = 0) 
+    if (layer = 0)
     {
         SetToolTip("Standard keyboard layer")
     }
