@@ -35,5 +35,5 @@ noremap k n
 noremap K N
 
 " set hintkeys to colemak homerow
-set hintkeys=arstneio
+set hintkeys=arstqwfp
 set titlestring="Firefox ❤  Vim"
