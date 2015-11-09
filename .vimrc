@@ -7,6 +7,9 @@ set expandtab
 set nowrap
 set mouse=a
 
+" Set GUI font
+set gfn=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
+
 " Mapleader from \ to ,
 let mapleader=","
 
@@ -32,10 +35,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'morhetz/gruvbox.git'
 Plugin 'scrooloose/nerdtree'
 Plugin 'lokaltog/vim-easymotion'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-projectionist'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
 
 " Brief help
@@ -45,8 +47,10 @@ call vundle#end()
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 syntax enable
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 set t_Co=256
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
 set background=dark
 colorscheme gruvbox
 
@@ -54,18 +58,6 @@ colorscheme gruvbox
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-" Syntastic checking
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-
-" Vim-Ruby
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 
 " Highlight trailing spaces in annoying red
 highlight ExtraWhitespace ctermbg=1 guibg=red
@@ -90,9 +82,9 @@ noremap j <Nop>
 " Default ("e"), interferes with navigation
 let g:NERDTreeMapOpenExpl = "j"
 
-" Start NERDTree if no files are specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" CTRL N to open NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
 
 " Easymotion
 map <Leader> <Plug>(easymotion-prefix)
