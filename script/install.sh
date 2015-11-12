@@ -1,16 +1,14 @@
 #/bin/sh
 
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
+# This script creates symlinks from the home directory to any desired dotfiles in ~/.dotfiles
 ############################
 
 ########## Variables
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files=".gitconfig .vsvimrc .vim .zprezto .oh-my-zsh .zprezto .zsh
-.vimrc .pryrc .irbrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc
+files=".gitconfig .vim .oh-my-zsh .zsh .vimrc .pryrc .irbrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc
 tmux.conf .pentadactylrc"
-
 
 ##########
 
@@ -31,13 +29,13 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
 done
-# grab Vundle from github workaround because I can't get it working from within my repo
+
+# grab Vundle from github
 echo "Grabbing Vundle for you.."
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 echo "Grabbing oh-my-zsh.."
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
-echo "Running Vim PluginInstall"
+echo "Running Vim :PluginInstall"
 vim +PluginInstall +qall
 
 
