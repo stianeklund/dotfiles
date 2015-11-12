@@ -7,8 +7,7 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files=".gitconfig .vim .oh-my-zsh .zsh .vimrc .pryrc .irbrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc
-tmux.conf .pentadactylrc"
+files=".gitconfig .vim .oh-my-zsh .zsh .vimrc .viminfo .vimtags .dir_colors .tmux.conf .minttyrc .githelpers .lesskey .zshrc .tmux.conf .pentadactylrc"
 
 ##########
 
