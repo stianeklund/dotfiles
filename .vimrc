@@ -26,18 +26,15 @@ execute pathogen#infect()
 Plugin 'gmarik/Vundle.vim'
 
 " My plugins
-Plugin 'tpope/vim-fugitive'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'tpope/vim-surround'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/syntastic'
-Plugin 'morhetz/gruvbox.git'
-Plugin 'scrooloose/nerdtree'
-Plugin 'lokaltog/vim-easymotion'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-projectionist'
-Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-fugitive'                 " Git wrapper
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  " HTML expansion
+Plugin 'tpope/vim-surround'                 "
+Plugin 'godlygeek/tabular'                  " :Tabularize / arg
+Plugin 'plasticboy/vim-markdown'            "
+Plugin 'scrooloose/syntastic'               " Syntax all the things
+Plugin 'morhetz/gruvbox.git'                "
+Plugin 'scrooloose/nerdtree'                "
+Plugin 'lokaltog/vim-easymotion'            " Because normal movement is slow
 call vundle#end()
 
 " Brief help
@@ -47,7 +44,8 @@ call vundle#end()
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 syntax enable
-"let g:solarized_termcolors=256
+
+" set term colors to 256
 set t_Co=256
 let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
@@ -84,7 +82,6 @@ let g:NERDTreeMapOpenExpl = "j"
 
 " CTRL N to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
-
 
 " Easymotion
 map <Leader> <Plug>(easymotion-prefix)
