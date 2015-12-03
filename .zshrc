@@ -17,7 +17,7 @@ export GREP_OPTIONS='--color=auto'
 alias less='less -R'
 
 # Plugins
-plugins=(git ruby tmux colemak colorize)
+plugins=(git tmux colorize)
 
 # User configuration
 export PATH="/usr/local/bin:$PATH"
