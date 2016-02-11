@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 font pango:DejaVu Sans Mono for Powerline 9
 
@@ -146,9 +146,9 @@ bindsym $mod+p mode "resize"
 
 # Window colors:
 # colorclass            border  bckgrnd text    indicator
-client.focused          #2d2d2d #2d2d2d #cccccc #2d2d2d
+client.focused          #9d0006 #9d0006 #fdf4c1 #393939
 client.focused_inactive #2d2d2d #2d2d2d #cccccc #393939
-client.unfocused        #5d2d2d #2d2d2d #999999 #2d2d2d
+client.unfocused        #999999 #2d2d2d #999999 #2d2d2d
 bar {
   font pango:DejaVu Sans Mono for Powerline 9
   status_command i3blocks -c ~/.i3/i3blocks.conf
@@ -184,4 +184,11 @@ exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
 exec redshift-gtk
 # set background image
 exec --no-startup-id feh --bg-scale /home/stian/Pictures/matherpoint.jpg
+# remove borders
 hide_edge_borders both
+
+# enable and force xinerama
+exec xrandr --output VGA-0 --auto --left-of VGA-1
+# enable Virtualbox guest client
+exec VBoxClient-all
+
