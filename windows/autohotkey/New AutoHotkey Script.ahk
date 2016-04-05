@@ -11,11 +11,6 @@
 ; Always reload script, skip message box
 #SingleInstance force
 
-; Ctrl-CapsLock to keyboardLayer caps
-; CapsLock alone or with any other modifiers triggers a remap to ESC with said modifiers
-^Capslock::Capslock
-CapsLock::Esc
-
 GroupAdd, ConsoleWindowGroup, ahk_class ConsoleWindowClass
 GroupAdd, ConsoleWindowGroup, ahk_class mintty
 
@@ -41,7 +36,7 @@ Return
     return
 
 #if (!WinActive("ahk_class mintty"))
-^W::Send,+{Home}{Delete} ;;Delete previous word
+^W::Send,+{Ctrl}{Backspace} ;;Delete previous word
 Return
 
 #if (!WinActive("ahk_class mintty"))
@@ -85,39 +80,6 @@ Return
     return
 #IfWinActive
 
-; Toggle normal/alternative keyboard layers
-<^>!l::SetKeyboardLayer(0)
-<^>!y::SetKeyboardLayer(1)
-
-; Support AltGr+<key> to emulate arrow keys, pgup/down, home/end regardless of keyboard layer
-<^>!n::Send {Left}
-<^>!u::Send {Up}
-<^>!i::Send {Right}
-<^>!e::Send {Down}
-<^>!h::Send {Home}
-<^>!o::Send {End}
-<^>!k::Send {PgUp}
-<^>!m::Send {PgDn}
-;<^>!l::Send ^{Left}   Occupied for toggling keyboard layers above
-;<^>!y::Send ^{Right}  Occupied for toggling keyboard layers above
-
-#If (keyboardLayer = 1)
-    CapsLock::
-    Esc::
-        SetKeyboardLayer(0) ; Quick exit alternative keyboard layout with ESC
-    return
-    n::Send {Left}
-    u::Send {Up}
-    i::Send {Right}
-    e::Send {Down}
-    h::Send {Home}
-    o::Send {End}
-    k::Send {PgUp}
-    m::Send {PgDn}
-    l::Send ^{Left}
-    y::Send ^{Right}
-#If
-
 SetToolTip(msg)
 {
     #Persistent
@@ -139,8 +101,6 @@ SetKeyboardLayer(layer)
     {
         SetToolTip("Standard keyboard layer")
     }
-    else if (layer = 1)
-    {
-        SetToolTip("Alternative keyboard layer")
+    else SetToolTip("Unknown layer")
     }
-}
+
