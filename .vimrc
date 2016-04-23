@@ -66,7 +66,10 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " CTRL N to open NERDTree
-map <C-n> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
 
 " Easymotion
 map <Leader> <Plug>(easymotion-prefix)
+
+" Map jj to produce Esc
+imap jj <Esc>
