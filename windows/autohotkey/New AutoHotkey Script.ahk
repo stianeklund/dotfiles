@@ -11,6 +11,17 @@
 ; Always reload script, skip message box
 #SingleInstance force
 
+#installKeybdHook
+#Persistent
+; Menu, Tray, Icon , Shell32.dll, 25, 1
+TrayTip, AutoHotKey, Started, 1
+SoundBeep, 300, 150
+Return
+
+; Make Ctrl & { equivalent to Esc
+Capslock & {::SendInput {Esc Down}
+Capslock & { up::SendInput {Esc Up}
+
 GroupAdd, ConsoleWindowGroup, ahk_class ConsoleWindowClass
 GroupAdd, ConsoleWindowGroup, ahk_class mintty
 
@@ -79,6 +90,12 @@ Return
     Send {WheelDown}
     return
 #IfWinActive
+; Toggle normal/alternative keyboard layers
+<^>![::SetKeyboardLayer(0)
+<^>!]::SetKeyboardLayer(1)
+
+#IfWinActive
+
 
 SetToolTip(msg)
 {
@@ -101,6 +118,6 @@ SetKeyboardLayer(layer)
     {
         SetToolTip("Standard keyboard layer")
     }
-    else SetToolTip("Unknown layer")
+    else SetToolTip("Alternative layer")
     }
 
