@@ -10,9 +10,6 @@ set mouse=a
 " Set GUI font
 set gfn=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
 
-" Mapleader from \ to ,
-let mapleader=","
-
 filetype off " required
 filetype indent plugin on
 
@@ -43,6 +40,24 @@ call vundle#end()
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
+" Mapleader from \ to ,
+let mapleader="\<Space>"
+
+" Use leader for frequently used actions
+" <Space>w to save file
+nnoremap <Leader>w :w<CR>
+
+" easy copy paste
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" jj produces Esc
+imap jj <Esc>
+
 syntax enable
 
 " set term colors to 256
@@ -66,10 +81,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " CTRL N to open NERDTree
-" map <C-n> :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
 
 " Easymotion
 map <Leader> <Plug>(easymotion-prefix)
 
-" Map jj to produce Esc
-imap jj <Esc>
