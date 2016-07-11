@@ -1,12 +1,11 @@
 set nocompatible              " be iMproved, required
-set relativenumber
 set expandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
 set autoindent
 set expandtab
 set nowrap
 set mouse=a
-
+set backspace=indent,eol,start
 " Set GUI font
 set gfn=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
 
@@ -24,7 +23,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " My plugins
 Plugin 'tpope/vim-fugitive'                 " Git wrapper
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  " HTML expansion
 Plugin 'tpope/vim-surround'                 "
 Plugin 'godlygeek/tabular'                  " :Tabularize / arg
 Plugin 'plasticboy/vim-markdown'            "
@@ -32,6 +30,9 @@ Plugin 'scrooloose/syntastic'               " Syntax all the things
 Plugin 'morhetz/gruvbox.git'                "
 Plugin 'scrooloose/nerdtree'                "
 Plugin 'lokaltog/vim-easymotion'            " Because normal movement is slow
+Plugin 'racer-rust/vim-racer'
+Plugin 'rust-lang/rust.vim'
+Plugin 'vim-airline/vim-airline'
 call vundle#end()
 
 " Brief help
@@ -67,10 +68,24 @@ let &t_AF="\e[38;5;%dm"
 set background=dark
 colorscheme gruvbox
 
-" Enable syntastic statusline changes
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+set number
+set relativenumber
+
+augroup linenumbers
+  autocmd!
+  autocmd BufEnter *    :set relativenumber
+  autocmd BufLeave *    :set number norelativenumber
+  autocmd WinEnter *    :set relativenumber
+  autocmd WinLeave *    :set number norelativenumber
+  autocmd InsertEnter * :set number norelativenumber
+  autocmd InsertLeave * :set relativenumber
+  autocmd FocusLost *   :set number norelativenumber
+  autocmd FocusGained * :set relativenumber
+augroup END
+
+" set airline status line
+set laststatus=2
+let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 
 " Highlight trailing spaces in annoying red
 highlight ExtraWhitespace ctermbg=1 guibg=red
@@ -79,9 +94,6 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
-" CTRL N to open NERDTree
-"map <C-n> :NERDTreeToggle<CR>
 
 " Easymotion
 map <Leader> <Plug>(easymotion-prefix)
