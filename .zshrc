@@ -1,8 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
 # Pretty colors
-set -g default-terminal "screen-256color"
+set -g default-terminal "xterm-256color"
+eval `dircolors ~/.dir_colors`
 
 # Oh my ZSH theme
 ZSH_THEME="robbyrussell"
@@ -34,6 +34,7 @@ plugins=(git tmux colorize)
 export PATH="/usr/local/bin:$PATH"
 source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
+export TERM=xterm-256color
 #eval "$(hub alias -s)" # hub alias to git
 
 # tmux aliases
