@@ -3,7 +3,7 @@
 	name = Stian Eklund
 
 [credential]
-  helper = !"`sh -c 'source ~/.githelpers && run_credential_helper'`"
+	helper = store
 
 [remote "origin"]
 	receivepack = git receive-pack
@@ -163,3 +163,5 @@
     enabled = true
 [hub]
 	protocol = https
+[core]
+	excludesfile = /home/stian/.gitignore_global

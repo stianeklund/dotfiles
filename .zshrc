@@ -44,4 +44,9 @@ alias tnew='tmux new -s'
 alias tls='tmux ls'
 alias tkill='tmux kill-session -t'
 
+# cargo aliases
+alias cb='cargo build'
+alias cr='cargo run'
+# set keymap to US International
+setxkbmap -layout us -variant altgr-intl -option nodeadkeys
 
