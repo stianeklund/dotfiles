@@ -29,18 +29,19 @@ call pathogen#helptags()
 execute pathogen#infect()
 
 " Vundle Plugins
-Plugin 'gmarik/Vundle.vim'                  " Let Vundle manage Vundle, required
-" Color schemes
-Plugin 'morhetz/gruvbox.git'                " Gruvbox for Vim
-" Language specific
+Plugin 'gmarik/Vundle.vim'              " Let Vundle manage Vundle, required
+" Color schemes                         ************************************
+Plugin 'morhetz/gruvbox.git'            " Gruvbox for Vim
+" Language specific                     ************************************
 Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
-Plugin 'plasticboy/vim-markdown'            " Markdown support
-"Other
-Plugin 'godlygeek/tabular'                  " :Tabularize / arg
-Plugin 'scrooloose/syntastic'               " Syntax all the things
-Plugin 'lokaltog/vim-easymotion'            " Because normal movement is slow
+Plugin 'plasticboy/vim-markdown'        " Markdown support
+"Other plugins                          ************************************
+Plugin 'godlygeek/tabular'              " :Tabularize / arg
+Plugin 'scrooloose/syntastic'           " Syntax all the things
+Plugin 'lokaltog/vim-easymotion'        " Because normal movement is slow
 Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-fugitive'             " Git from Vim
 call vundle#end()
 
 " Brief help
