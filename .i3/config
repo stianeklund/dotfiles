@@ -11,7 +11,7 @@
 
 set $mod Mod1
 
-font pango:DejaVu Sans Mono for Powerline 9
+font pango:DejaVu Sans Mono for Powerline 9, FontAwesome 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -30,11 +30,11 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+s exec dmenu_run
+# bindsym $mod+s exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -67,12 +67,12 @@ bindsym $mod+z split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+t fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+r layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+f layout toggle split
+bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -150,7 +150,7 @@ client.focused          #9d0006 #9d0006 #fdf4c1 #393939
 client.focused_inactive #2d2d2d #2d2d2d #cccccc #393939
 client.unfocused        #999999 #2d2d2d #999999 #2d2d2d
 bar {
-  font pango:DejaVu Sans Mono for Powerline 9
+  font pango:DejaVu Sans Mono for Powerline 9, FontAwesome 9
   status_command i3blocks -c ~/.i3/i3blocks.conf
   position bottom
   colors {
@@ -181,14 +181,29 @@ bindsym XF86Battery exec gnome-power-statistics
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-settings-daemon
+exec --no-startup-id gnome-keyring-daemon
 exec redshift-gtk
 # set background image
-exec --no-startup-id feh --bg-scale /home/stian/Pictures/matherpoint.jpg
+exec --no-startup-id feh --bg-scale /home/stian/Pictures/wallhaven.jpg
 # remove borders
 hide_edge_borders both
 
 # enable and force xinerama
-exec xrandr --output VGA-0 --auto --left-of VGA-1
+exec xrandr --output DVI-I-3 --auto --left-of DVI-I-2
 # enable Virtualbox guest client
-exec VBoxClient-all
+#exec VBoxClient-all
 
+# Change mouse buttons for slimblade mouse
+exec xinput set-button-map 11 3 2 1 4 5 6 7 8 9
+
+# Enable xautolock and gnome-sceensaver
+exec xautolock -time 30 -locker "gnome-screensaver-command --lock" &
+bindsym Ctrl+Mod1+l exec xautolock -locknow
+
+# Use Kensington Slimblade as with left hand (set button-map devid button map)
+exec xinput set-button-map 11 3 2 1 4 5 6 7 8 9
+
+# Set keyboard layout to US Intl w/o deadkeys
+exec setxkbmap -layout us -variant altgr-intl -option nodeadkeys
+# Set workman intl
+# exec setxkbmap -layout workman -variant workman-intl
