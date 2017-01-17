@@ -83,7 +83,9 @@ esac
 read -p "Install i3? 1: Apt, 2: pkg-ng, n/N " option
 echo
 case "$option" in
-    1) echo "Apt"; sudo apt install i3 i3blocks;;
+    1) echo "Apt"; sudo apt install i3 i3blocks;
+        echo "Setting wallpaper"
+        feh --bg-scale /home/stian/.dotfiles/wallpapers/wallpaper.png;;
     2) echo "pkg"; sudo pkg install i3 i3blocks;;
     n|N ) echo "No";;
     * ) echo "Invalid option";;
