@@ -49,8 +49,4 @@ alias cb='cargo build'
 alias cr='cargo run'
 # set keymap to US International
 # setxkbmap -layout us -variant altgr-intl -option nodeadkeys
-<<<<<<< HEAD
-
-=======
 # setxkbmap -v us -variant workman-intl && xset -r 66
->>>>>>> 4a3d88002a4e6293665fc01a2305b6ca14ffcffd
