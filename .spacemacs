@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
      rust
      lua
      ;; ----------------------------------------------------------------
@@ -40,7 +41,7 @@ values."
      ;; ----------------------------------------------------------------
      themes-megapack
      ivy
-     ;;auto-completion
+     auto-completion
      better-defaults
      emacs-lisp
      git
@@ -137,7 +138,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("DejaVu Sans Mono for Powerline"
-                               :size 15
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -269,7 +270,7 @@ values."
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil, advise quit functions to keep server open when quitting.
-   ;; (default nil)
+;; (default nil)
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
@@ -287,38 +288,35 @@ values."
    dotspacemacs-whitespace-cleanup nil
    ))
 
+
 (defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init', before layer configuration
-executes.
- This function is mostly useful for variables that need to be set
-before packages are loaded. If you are unsure, you should try in setting them in
-`dotspacemacs/user-config' first."
-  (setq-default evil-escape-key-sequence "jj")
-  ;; Default theme
-  (setq-default dotspacemacs-themes '(gruvbox)))
-
-
-;; User config
+  ;; default theme
+(setq-default dotspacemacs-themes '(gruvbox)))
+;; user config
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
+  "configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;; Display line numbers
-  (global-linum-mode)
+    (global-linum-mode)
   (with-eval-after-load 'linum
     (linum-relative-toggle))
+  (global-company-mode t)
   ;; Set Rust src path
-  (setq racer-rust-src-path "/home/stian/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+  ;; Nightly
+  ;;(setq racer-rust-src-path "/home/stian/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
+  ;; Stable
+  (setq racer-rust-src-path "/home/stian/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
   ;; Enable flycheck
-  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+  ;;(add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
   ;; Enable Racer
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode)
-  (add-hook 'racer-mode-hook #'company-mode)
+  (add-hook 'racer-mode-hook #'company-racer)
+  (add-hook 'rust-mode-hook #'flymake-mode)
   ;; Enable Cargo
   (add-hook 'rust-mode-hook 'cargo-minor-mode)
   ;; Enable emacs racer

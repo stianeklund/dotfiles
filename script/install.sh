@@ -28,6 +28,14 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
 done
+# Install Workman?
+read -p "Install Workman? 1: apt, 2: pkg-ng, n/N " option
+echo
+case "$option" in
+    y|Y) echo "Yes"; sudo cp /home/stian/.dotfiles/workman/us /usr/share/X11/xkb/symbols/;;
+    n|N ) echo "No";;
+    * ) echo "Invalid option";;
+esac
 
 # Install Vim?
 read -p "Install Vim? 1: apt, 2: pkg-ng, n/N " option
