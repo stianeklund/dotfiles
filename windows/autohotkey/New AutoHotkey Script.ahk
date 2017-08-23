@@ -19,9 +19,7 @@ SoundBeep, 300, 150
 Return
 
 ; Make Ctrl & { equivalent to Esc
-Capslock & {::SendInput {Esc Down}
-Capslock & { up::SendInput {Esc Up}
-
+Ctrl & {::SendInput {Esc}
 GroupAdd, ConsoleWindowGroup, ahk_class ConsoleWindowClass
 GroupAdd, ConsoleWindowGroup, ahk_class mintty
 
