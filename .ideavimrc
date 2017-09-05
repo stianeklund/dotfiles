@@ -4,6 +4,7 @@ so ~/.dotfiles/.vimrc.remaps
 
 set surround
 set clipboard+=unnamed
+
 " Set leader key to Space
 let mapleader = " "
 
@@ -11,7 +12,7 @@ let mapleader = " "
 behave mswin
 
 " backspace and cursor keys wrap to previous/next line
-set backspace=indent,eol,start 
+set backspace=indent,eol,start
 
 " vsvim says: "Option is not supported: '+='"
 "set whichwrap+=<,>,[,]
@@ -42,6 +43,8 @@ set nu
 " set wildmenu
 set cursorline
 
+" turn off search highlighting
+set nohlsearch
 
 
 " CTRL-X and SHIFT-Del are Cut
