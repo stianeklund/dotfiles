@@ -2,13 +2,15 @@
 export ZSH=$HOME/.oh-my-zsh
 # Pretty colors
 set -g default-terminal "xterm-256color"
-eval `dircolors ~/.dir_colors`
+#eval `dircolors ~/.dir_colors`
 
 # Oh my ZSH theme
 ZSH_THEME="robbyrussell"
 
 ENABLE_CORRECTION="true"
 
+# Turn off auto titles, annoying as hell
+DISABLE_AUTO_TITLE="true"
 # Display grep matches in green
 export GREP_COLOR='0;32'
 export GREP_OPTIONS='--color=auto'

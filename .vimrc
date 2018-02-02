@@ -42,6 +42,8 @@ Plugin 'scrooloose/syntastic'           " Syntax all the things
 Plugin 'lokaltog/vim-easymotion'        " Because normal movement is slow
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'             " Git from Vim
+" 8080 assembly syntax highlighting
+Plugin 'oraculo666/vim-m80'
 call vundle#end()
 
 " Brief help
