@@ -28,6 +28,20 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
 done
+# Install Rust
+read -p "Install Rust? Y/n" option
+echo
+case $option in
+    y|Y) echo "Yes, installing through Rustup";
+        if which curl >/dev/null; then
+            curl https://sh.rustup.rs -ssf | sh
+        else
+            echo "curl not installed, aborting";
+        fi;;
+    n|N) echo "No";;
+    * ) echo "Invalid option";;
+esac
+
 # Install Workman?
 read -p "Install Workman? 1: apt, 2: pkg-ng, n/N " option
 echo
@@ -97,4 +111,5 @@ case "$option" in
     2) echo "pkg"; sudo pkg install i3 i3blocks;;
     n|N ) echo "No";;
     * ) echo "Invalid option";;
+
 esac
