@@ -1,0 +1,5 @@
+Workman-Intl with AltGr Deadkeys (no other dead keys) Modded file.
+Make backup or original file: us in /usr/share/X11/xkb/symbols.
+Put new file in in /usr/share/X11/xkb/symbols/
+
+
