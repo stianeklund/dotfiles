@@ -83,8 +83,9 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Let jj produce Esc
-imap jj <Esc>
+" Let ctrl-j produce Esc
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
 
 " Mapleader from \ to space
 let mapleader="\<Space>"
