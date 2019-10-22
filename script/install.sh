@@ -28,6 +28,21 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
 done
+# Install Fish
+read -p "Install Fish & oh-my-fish? Y/n" option
+echo
+case $option in
+    y|Y) echo "Installing"
+        sudo apt install fish
+        if which curl >/dev/null; then
+            curl -L https://get.oh-my.fish | fish
+        else
+            echo "curl not installed, aborting OMF installation";
+        fi;;
+    n|N) echo "No";;
+    * ) echo "Invalid option";;
+esac
+
 # Install Rust
 read -p "Install Rust? Y/n" option
 echo
@@ -73,31 +88,13 @@ case "$option" in
     n|n ) echo "No";;
     * ) echo "Invalid option";;
 esac
-# Install Zsh & tmux?
-read -p "Install Zsh & Tmux? 1: apt, 2: pkg-ng n/N " option
+# Install Tmux?
+read -p "Install Tmux? 1: apt, 2: pkg-ng n/N " option
 echo
 case "$option" in
-    1 ) echo "Apt"; sudo apt install zsh tmux;;
-    2) echo "Pkg"; sudo pkg install zsh tmux;;
+    1 ) echo "Apt"; sudo apt install tmux;;
+    2) echo "Pkg"; sudo pkg install tmux;;
     n|n ) echo "No";;
-    * ) echo "Invalid option";;
-esac
-# Install Emacs?
-read -p "Install Emacs? 1: Apt, 2: pkg-ng, n/N " choice
-echo
-case "$choice" in
-    1 ) echo "apt"; sudo apt install emacs;;
-    2 ) echo "pkg"; sudo pkg install emacs;;
-    n|N ) echo "No";;
-    * ) echo "Invalid option";;
-esac
-
-# Install Spacemacs?
-read -p "Install Spacemacs? y/n " option
-echo
-case "$option" in
-    y|Y ) echo "Yes"; git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d;;
-    n|N ) echo "No";;
     * ) echo "Invalid option";;
 esac
 
@@ -111,5 +108,4 @@ case "$option" in
     2) echo "pkg"; sudo pkg install i3 i3blocks;;
     n|N ) echo "No";;
     * ) echo "Invalid option";;
-
 esac
