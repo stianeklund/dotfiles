@@ -93,6 +93,8 @@ let mapleader="\<Space>"
 " Use leader for frequently used actions
 " <Space>w to save file
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>qq :q!<CR>
 
 " Easymotion (for fast navigation)
 map <Leader> <Plug>(easymotion-prefix)
