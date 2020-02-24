@@ -270,7 +270,11 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
+<<<<<<< HEAD
   save_to_clipboard: true
+=======
+  save_to_clipboard: false
+>>>>>>> 050186aa58de44c73ef3a2422d857cc5f460d0c5
 
 # Allow terminal applications to change Alacritty's window title.
 dynamic_title: true
@@ -303,14 +307,21 @@ live_config_reload: true
 shell:
   program: bash
 #  args:
+<<<<<<< HEAD
 #    -c
+=======
+>>>>>>> 050186aa58de44c73ef3a2422d857cc5f460d0c5
 #    - --login
 
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
+<<<<<<< HEAD
 working_directory: /users/stian
+=======
+working_directory: None
+>>>>>>> 050186aa58de44c73ef3a2422d857cc5f460d0c5
 
 # Windows 10 ConPTY backend (Windows only)
 #
@@ -444,8 +455,13 @@ debug:
 #   - AppKeypad
 key_bindings:
   # (Windows/Linux only)
+<<<<<<< HEAD
   - { key: V,        mods: Control|Shift, action: Paste            }
   - { key: C,        mods: Control|Shift, action: Copy             }
+=======
+  #- { key: V,        mods: Control|Shift, action: Paste            }
+  #- { key: C,        mods: Control|Shift, action: Copy             }
+>>>>>>> 050186aa58de44c73ef3a2422d857cc5f460d0c5
   #- { key: Insert,   mods: Shift,         action: PasteSelection   }
   #- { key: Key0,     mods: Control,       action: ResetFontSize    }
   #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
@@ -468,10 +484,15 @@ key_bindings:
   #- { key: W,      mods: Command,         action: Quit             }
   #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
+<<<<<<< HEAD
     # - { key: Paste,                   action: Paste                            }
     # - { key: Copy,                    action: Copy                             }
   - { key: J,        mods: Control, chars: "\x1b",                           }
   - { key: LBracket, mods: Control, chars: "\x1b",                           }
+=======
+  - { key: Paste,                   action: Paste                            }
+  - { key: Copy,                    action: Copy                             }
+>>>>>>> 050186aa58de44c73ef3a2422d857cc5f460d0c5
   - { key: L,        mods: Control, action: ClearLogNotice                   }
   - { key: L,        mods: Control, chars: "\x0c"                            }
   - { key: Home,     mods: Alt,     chars: "\x1b[1;3H"                       }

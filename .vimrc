@@ -37,6 +37,7 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'plasticboy/vim-markdown'        " Markdown support
 "Other plugins                          ************************************
+Plugin 'kazark/vim-log4x'
 Plugin 'godlygeek/tabular'              " :Tabularize / arg
 Plugin 'scrooloose/syntastic'           " Syntax all the things
 Plugin 'lokaltog/vim-easymotion'        " Because normal movement is slow
@@ -84,8 +85,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Let ctrl-j produce Esc
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
+" inoremap <C-j> <Esc>
+" vnoremap <C-j> <Esc>
 
 " Mapleader from \ to space
 let mapleader="\<Space>"
@@ -107,6 +108,8 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+" fzf with linuxbrew
+set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 " Enable Racer for Rust and set Rust src path
 set hidden
 let g:racer_cmd = "</home/stian.cargo/racer"
