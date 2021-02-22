@@ -5,7 +5,6 @@ set autoindent
 set expandtab
 set nowrap
 set mouse=a
-set clipboard=unnamedplus
 set backspace=indent,eol,start " More sensible backspace
 set gfn=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
 set number
@@ -23,8 +22,6 @@ if has('persistent_undo')   "
     set undoreload=10000    " Maximum number lines to save for undo on a buffer reload
 endif
 
-" Fix bug with Vundle
-set shell=/bin/bash
 " Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -40,17 +37,14 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'plasticboy/vim-markdown'        " Markdown support
 "Other plugins                          ************************************
-Plugin 'kazark/vim-log4x'
 Plugin 'godlygeek/tabular'              " :Tabularize / arg
 Plugin 'scrooloose/syntastic'           " Syntax all the things
 Plugin 'lokaltog/vim-easymotion'        " Because normal movement is slow
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'             " Git from Vim
-Plugin 'tpope/vim-fireplace'
 " 8080 assembly syntax highlighting
 Plugin 'oraculo666/vim-m80'
-" Clojure
-Plugin 'guns/vim-clojure-static'
+Plugin 'kazark/vim-log4x'
 call vundle#end()
 
 " Brief help
@@ -91,8 +85,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Let ctrl-j produce Esc
-" inoremap <C-j> <Esc>
-" vnoremap <C-j> <Esc>
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
 
 " Mapleader from \ to space
 let mapleader="\<Space>"
@@ -100,8 +94,6 @@ let mapleader="\<Space>"
 " Use leader for frequently used actions
 " <Space>w to save file
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>qq :q!<CR>
 
 " Easymotion (for fast navigation)
 map <Leader> <Plug>(easymotion-prefix)
@@ -114,8 +106,6 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" fzf with linuxbrew
-set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
 " Enable Racer for Rust and set Rust src path
 set hidden
 let g:racer_cmd = "</home/stian.cargo/racer"

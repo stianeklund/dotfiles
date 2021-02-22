@@ -15,11 +15,11 @@
 	default = current
 [pull]
     default = current
+	rebase = true
 [branch]
     autosetuprebase = always
 [apply]
     whitespace = nowarn
-
 [diff]
     memonicprefix = true
     tool = semanticdiff
@@ -27,7 +27,6 @@
     prompt = false
 [difftool "semanticdiff"]
     cmd = $LOCALAPPDATA/PlasticSCM4/semanticmerge/semanticmergetool.exe -nolangwarn -s "$(cygpath -w $LOCAL)" -d "$(cygpath -w $REMOTE)"
-
 [merge]
     tool = splice
 [mergetool]
@@ -125,6 +124,8 @@
     gr = grep -Ii
     #grep from root folder
     gra = "!f() { A=$(pwd) && TOPLEVEL=$(git rev-parse --show-toplevel) && cd $TOPLEVEL && git grep --full-name -In $1 | xargs -I{} echo $TOPLEVEL/{} && cd $A; }; f"
+    gru = remote update
+    grh = reset --hard
 
     #grep on filename
     f = "!git ls-files | grep -i"
@@ -165,3 +166,4 @@
 	protocol = https
 [core]
 	excludesfile = /home/stian/.gitignore_global
+	editor = /usr/bin/vim
