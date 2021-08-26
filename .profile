@@ -19,6 +19,6 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$TI/:~/ti/msp430_gcc/bin:$PATH"
 export RUST_SRC_PATH=~/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+. "$HOME/.cargo/env"

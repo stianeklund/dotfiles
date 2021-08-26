@@ -167,3 +167,6 @@
 [core]
 	excludesfile = /home/stian/.gitignore_global
 	editor = /usr/bin/vim
+
+[commit]
+      template = ~/.gitmessage
