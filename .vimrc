@@ -1,3 +1,18 @@
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin('~/.vim/bundle')
+"call plug#begin('~/vimfiles/bundle')
+
+
 set nocompatible              " be iMproved, required
 set expandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
@@ -26,38 +41,18 @@ endif
 " Fix bug with Vundle
 set shell=/bin/bash
 " Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 call pathogen#helptags()
 execute pathogen#infect()
 
-" Vundle Plugins
-Plugin 'gmarik/Vundle.vim'              " Let Vundle manage Vundle, required
-" Color schemes                         ************************************
-Plugin 'morhetz/gruvbox.git'            " Gruvbox for Vim
-" Language specific                     ************************************
-Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
-Plugin 'plasticboy/vim-markdown'        " Markdown support
-"Other plugins                          ************************************
-Plugin 'kazark/vim-log4x'
-Plugin 'godlygeek/tabular'              " :Tabularize / arg
-Plugin 'scrooloose/syntastic'           " Syntax all the things
-Plugin 'lokaltog/vim-easymotion'        " Because normal movement is slow
-Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-fugitive'             " Git from Vim
-Plugin 'tpope/vim-fireplace'
-" 8080 assembly syntax highlighting
-Plugin 'oraculo666/vim-m80'
-" Clojure
-Plugin 'guns/vim-clojure-static'
-call vundle#end()
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+" Plugins
+Plug 'morhetz/gruvbox'            " Gruvbox for Vim
+Plug 'plasticboy/vim-markdown'        " Markdown support
+Plug 'kazark/vim-log4x'
+Plug 'godlygeek/tabular'              " :Tabularize / arg
+Plug 'scrooloose/syntastic'           " Syntax all the things
+Plug 'lokaltog/vim-easymotion'        " Because normal movement is slow
+Plug 'tpope/vim-fugitive'             " Git from Vim
+call plug#end()
 
 " 256 Colors
 set t_Co=256
@@ -114,9 +109,3 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" fzf with linuxbrew
-set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
-" Enable Racer for Rust and set Rust src path
-set hidden
-let g:racer_cmd = "</home/stian.cargo/racer"
-let $RUST_SRC_PATH="/usr/local/src/rust/src/"
