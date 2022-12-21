@@ -60,4 +60,5 @@ function jsummary
     jira-terminal detail -f summary (branch)
 end
 
+abbr getprtitle 'echo (branch): (jsummary) | clip.exe'
 starship init fish | source
