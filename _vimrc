@@ -1,57 +1,35 @@
-set nocompatible              " be iMproved, required
+call plug#begin('~/.vim/bundle')
+
+" Plugins
+Plug 'morhetz/gruvbox'            " Gruvbox for Vim
+Plug 'plasticboy/vim-markdown'        " Markdown support
+Plug 'kazark/vim-log4x'
+Plug 'godlygeek/tabular'              " :Tabularize / arg
+Plug 'lokaltog/vim-easymotion'        " Because normal movement is slow
+Plug 'tpope/vim-fugitive'             " Git from Vim
+call plug#end()
+
+filetype indent plugin on
+syntax enable
+
+autocmd BufNewFile,BufRead *log* set filetype=log
+autocmd BufNewFile,BufRead *log*.txt set syntax=log4x
+
 set expandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
 set autoindent
-set expandtab
 set nowrap
 set mouse=a
-set backspace=indent,eol,start " More sensible backspace
-set gfn=DejaVu_Sans_Mono_for_Powerline:h10:cANSI
+set clipboard=unnamedplus
+set backspace=indent,eol,start
 set number
 set relativenumber
-syntax enable
-
-
-filetype off " required
-filetype indent plugin on
-
-set backup                  " Backups are nice ...
-if has('persistent_undo')   "
-    set undofile            " So is persistent undo ...
-    set undolevels=1000     " Maximum number of changes that can be undone
-    set undoreload=10000    " Maximum number lines to save for undo on a buffer reload
+set backup
+if has('persistent_undo')
+    set undofile
+    set undolevels=1000
+    set undoreload=10000
 endif
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-call pathogen#helptags()
-execute pathogen#infect()
-
-" Vundle Plugins
-Plugin 'gmarik/Vundle.vim'              " Let Vundle manage Vundle, required
-" Color schemes                         ************************************
-Plugin 'morhetz/gruvbox.git'            " Gruvbox for Vim
-" Language specific                     ************************************
-Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
-Plugin 'plasticboy/vim-markdown'        " Markdown support
-"Other plugins                          ************************************
-Plugin 'godlygeek/tabular'              " :Tabularize / arg
-Plugin 'scrooloose/syntastic'           " Syntax all the things
-Plugin 'lokaltog/vim-easymotion'        " Because normal movement is slow
-Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-fugitive'             " Git from Vim
-" 8080 assembly syntax highlighting
-Plugin 'oraculo666/vim-m80'
-Plugin 'kazark/vim-log4x'
-call vundle#end()
-
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 
 " 256 Colors
 set t_Co=256
@@ -59,6 +37,7 @@ let &t_AB="\e[48;5;%dm"
 let &t_AF="\e[38;5;%dm"
 set background=dark
 colorscheme gruvbox
+
 " Set airline status line
 set laststatus=2
 let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
@@ -84,19 +63,14 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Let ctrl-j produce Esc
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
-
 " Mapleader from \ to space
 let mapleader="\<Space>"
 
 " Use leader for frequently used actions
 " <Space>w to save file
 nnoremap <Leader>w :w<CR>
-
-" Easymotion (for fast navigation)
-map <Leader> <Plug>(easymotion-prefix)
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>qq :q!<CR>
 
 " Easy copy paste
 vmap <Leader>y "+y
@@ -106,7 +80,5 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-" Enable Racer for Rust and set Rust src path
-set hidden
-let g:racer_cmd = "</home/stian.cargo/racer"
-let $RUST_SRC_PATH="/usr/local/src/rust/src/"
+" Easymotion (for fast navigation)
+map <Leader><Leader> <Plug>(easymotion-prefix)
