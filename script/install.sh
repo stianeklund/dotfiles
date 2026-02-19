@@ -21,17 +21,19 @@ echo "==> Creating symlinks"
 link config.fish "$HOME/.config/fish/config.fish"
 link .gitconfig "$HOME/.gitconfig"
 link .tmux.conf "$HOME/.tmux.conf"
-link .profile "$HOME/.profile"
-link .ideavimrc "$HOME/.ideavimrc"
 link nvim/init.vim "$HOME/.config/nvim/init.vim"
 link .gitmessage "$HOME/.gitmessage"
 link starship.toml "$HOME/.config/starship.toml"
 link fish_plugins "$HOME/.config/fish/fish_plugins"
 
-# PowerShell profile (Windows/WSL — only link if the target dir exists)
-PS_DIR="/mnt/c/Users/${USER}/Documents/PowerShell"
-if [ -d "$PS_DIR" ]; then
-    link Microsoft.PowerShell_profile.ps1 "$PS_DIR/Microsoft.PowerShell_profile.ps1"
+# Windows-side configs (only link if the target dirs exist)
+WIN_HOME="/mnt/c/Users/${USER}"
+if [ -d "$WIN_HOME" ]; then
+    link .ideavimrc "$WIN_HOME/.ideavimrc"
+    PS_DIR="$WIN_HOME/Documents/PowerShell"
+    if [ -d "$PS_DIR" ]; then
+        link Microsoft.PowerShell_profile.ps1 "$PS_DIR/Microsoft.PowerShell_profile.ps1"
+    fi
 fi
 
 # Fish

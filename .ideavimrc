@@ -1,116 +1,36 @@
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
 
-so ~/.dotfiles/.vimrc.remaps
+" Source your _vimrc
+source ~/_vimrc
 
-set surround
-set clipboard+=unnamed
+"" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
 
-" Set leader key to Space
-let mapleader = " "
-
-" set 'selection', 'selectmode', 'mousemodel' and 'keymodel' for MS-Windows
-behave mswin
-
-" backspace and cursor keys wrap to previous/next line
-set backspace=indent,eol,start
-
-" vsvim says: "Option is not supported: '+='"
-"set whichwrap+=<,>,[,]
-
-" SEARCHING
-"Ignore case in searches always.
-set ignorecase
-set smartcase
+" Do incremental searching.
 set incsearch
-set hlsearch
 
-" indentation every four columns
-set tabstop=4
-set softtabstop=4
+" Don't use Ex mode, use Q for formatting.
+map Q gq
 
-" Use indents of 4 spaces
-set shiftwidth=4
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
-"set smarttab " Use 'shiftwidth' when using <Tab> in front of a line."
-set autoindent
-"set shiftround
-"set showmatch
-set expandtab " Tabs are spaces, not tabs
-
-" enable line numbers
-set nu
-
-" set wildmenu
-set cursorline
-
-" turn off search highlighting
-set nohlsearch
+" Highlight copied text
+Plug 'machakann/vim-highlightedyank'
+" Commentary plugin
+Plug 'tpope/vim-commentary'
 
 
-" CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X> "+x
-vnoremap <S-Del> "+x
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
 
-" CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> "+y
-vnoremap <C-Insert> "+y
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
 
-" CTRL-V and SHIFT-Insert are Paste
-map <C-V>       "+gP
-map <S-Insert>      "+gP
-imap <C-V>      <Esc>"+gpa
-
-cmap <C-V>      <C-R>+
-cmap <S-Insert>     <C-R>+
-
-imap <S-Insert>     <C-V>
-vmap <S-Insert>     <C-V>
-
-" Use CTRL-Q to do what CTRL-V used to do
-noremap <C-Q>       <C-V>
-
-" backspace in Visual mode deletes selection
-vnoremap <BS> d
-
-" Use CTRL-S for saving, also in Insert mode
-noremap <C-S>       :w<CR>
-vnoremap <C-S>      <C-C>:w<CR>
-inoremap <C-S>      <C-O>:w<CR>
-
-" CTRL-Z is Undo; not in cmdline though
-noremap <C-Z> u
-inoremap <C-Z> <C-O>u
-
-" CTRL-Y is Redo (although not repeat); not in cmdline though
-noremap <C-Y> <C-R>
-inoremap <C-Y> <C-O><C-R>
-
-" CTRL-A is Select all
-noremap <C-A> gggH<C-O>G
-inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
-cnoremap <C-A> <C-C>gggH<C-O>G
-onoremap <C-A> <C-C>gggH<C-O>G
-snoremap <C-A> <C-C>gggH<C-O>G
-xnoremap <C-A> <C-C>ggVG
-
-"noremap <Left>  <NOP>
-"noremap <Right> <NOP>
-"noremap <Up>    <NOP>
-"noremap <Down>  <NOP>
-"vnoremap <Left>  <NOP>
-"vnoremap <Right> <NOP>
-"vnoremap <Up>    <NOP>
-"vnoremap <Down>  <NOP>
-
-" Show hints
-map gh :action ShowIntentionActions<CR>
-"Quickly edit/reload the vimrc file
-nmap <leader>ev :e ~/.ideavimrc<CR>
-nmap <leader>sv :so ~/.ideavimrc<CR>
-
-" close all tabs
-" :tabonly not implemented yet
-map <leader>to :action CloseAllEditorsButActive<cr>
-map <leader>y :action CopyPaths<cr>
-
-map <leader>c :action CommentByLineComment<cr>
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
