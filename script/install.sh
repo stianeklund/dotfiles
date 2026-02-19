@@ -22,10 +22,11 @@ link config.fish "$HOME/.config/fish/config.fish"
 link .gitconfig "$HOME/.gitconfig"
 link .tmux.conf "$HOME/.tmux.conf"
 link .profile "$HOME/.profile"
-link _vimrc "$HOME/_vimrc"
 link .ideavimrc "$HOME/.ideavimrc"
 link nvim/init.vim "$HOME/.config/nvim/init.vim"
 link .gitmessage "$HOME/.gitmessage"
+link starship.toml "$HOME/.config/starship.toml"
+link fish_plugins "$HOME/.config/fish/fish_plugins"
 
 # PowerShell profile (Windows/WSL — only link if the target dir exists)
 PS_DIR="/mnt/c/Users/${USER}/Documents/PowerShell"
@@ -62,8 +63,10 @@ if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-echo "==> Installing vim plugins"
-nvim +PlugInstall +qall
+if command -v nvim >/dev/null 2>&1; then
+    echo "==> Installing vim plugins"
+    nvim +PlugInstall +qall
+fi
 
 # TPM (Tmux Plugin Manager)
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
@@ -78,6 +81,16 @@ if ! command -v starship >/dev/null 2>&1; then
     case "$opt" in
         y|Y) curl -sS https://starship.rs/install.sh | sh ;;
     esac
+fi
+
+# Fisher plugin manager for fish
+if command -v fish >/dev/null 2>&1; then
+    if [ ! -f "$HOME/.config/fish/functions/fisher.fish" ]; then
+        echo "==> Installing fisher"
+        fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+    fi
+    echo "==> Installing fish plugins"
+    fish -c "fisher update"
 fi
 
 echo "==> Done"

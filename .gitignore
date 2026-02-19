@@ -16,3 +16,6 @@ Session.vim
 tags
 .vim/bundle/
 .vim/plugged/
+
+# Secrets
+secrets.fish
