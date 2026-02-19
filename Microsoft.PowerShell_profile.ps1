@@ -15,6 +15,25 @@ Set-PSReadLineKeyHandler -Chord Ctrl+u -Function BackwardKillLine
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle InlineView
 
+# PSReadLine - Gruvbox Dark syntax highlighting
+Set-PSReadLineOption -Colors @{
+    Command          = '#fabd2f'  # bright yellow
+    Parameter        = '#8ec07c'  # bright aqua
+    String           = '#b8bb26'  # bright green
+    Variable         = '#83a598'  # bright blue
+    Operator         = '#8ec07c'  # bright aqua
+    Number           = '#d3869b'  # bright purple
+    Type             = '#fabd2f'  # bright yellow
+    Comment          = '#928374'  # gray
+    Keyword          = '#fb4934'  # bright red
+    Member           = '#ebdbb2'  # foreground
+    Error            = '#fb4934'  # bright red
+    Emphasis         = '#fabd2f'  # bright yellow
+    Selection        = '#504945'  # bg2
+    InlinePrediction = '#7c6f64'  # bg4
+    ListPrediction   = '#928374'  # gray
+}
+
 # -------------------------
 # Aliases (simple mappings)
 # --------------------------
