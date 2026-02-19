@@ -22,15 +22,15 @@ function lg
 end
 
 function ls
-    exa --color=auto $argv
+    eza --color=auto $argv
 end
 
 function la
-    exa -a $argv
+    eza -a $argv
 end
 
 function ll
-    exa -lah $argv
+    eza -lah $argv
 end
 
 function bat
