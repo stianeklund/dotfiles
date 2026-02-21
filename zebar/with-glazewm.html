@@ -108,7 +108,7 @@
             setGpuStats(gpu);
           }
           updateTemps();
-          const interval = setInterval(updateTemps, 5000);
+          const interval = setInterval(updateTemps, 3000);
           return () => clearInterval(interval);
         }, []);
 
