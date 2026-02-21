@@ -70,24 +70,28 @@
         }
       }
 
-      // Fetch GPU temp via nvidia-smi.
-      async function fetchGpuTemp() {
+      // Fetch GPU temp and VRAM via nvidia-smi.
+      async function fetchGpuStats() {
         try {
           const result = await zebar.shellExec(
             'nvidia-smi',
-            '--query-gpu=temperature.gpu --format=csv,noheader,nounits',
+            '--query-gpu=temperature.gpu,memory.used,memory.total --format=csv,noheader,nounits',
           );
-          const val = parseFloat(result.stdout.trim());
-          return isNaN(val) ? null : val;
+          const [temp, used, total] = result.stdout.trim().split(', ');
+          return {
+            temp: parseFloat(temp) || null,
+            vramUsed: parseFloat(used) || null,
+            vramTotal: parseFloat(total) || null,
+          };
         } catch {
-          return null;
+          return { temp: null, vramUsed: null, vramTotal: null };
         }
       }
 
       function App() {
         const [output, setOutput] = useState(providers.outputMap);
         const [cpuTemp, setCpuTemp] = useState(null);
-        const [gpuTemp, setGpuTemp] = useState(null);
+        const [gpuStats, setGpuStats] = useState({ temp: null, vramUsed: null, vramTotal: null });
 
         useEffect(() => {
           providers.onOutput(() => setOutput(providers.outputMap));
@@ -98,10 +102,10 @@
           async function updateTemps() {
             const [cpu, gpu] = await Promise.all([
               fetchCpuTemp(),
-              fetchGpuTemp(),
+              fetchGpuStats(),
             ]);
             setCpuTemp(cpu);
-            setGpuTemp(gpu);
+            setGpuStats(gpu);
           }
           updateTemps();
           const interval = setInterval(updateTemps, 5000);
@@ -291,12 +295,19 @@
                 </div>
               )}
 
-              {gpuTemp !== null && (
+              {gpuStats.temp !== null && (
                 <div className="gpu-temp">
                   <i className="nf nf-md-expansion_card"></i>
-                  <span className={getTempClass(gpuTemp)}>
-                    {Math.round(gpuTemp)}°C
+                  <span className={getTempClass(gpuStats.temp)}>
+                    {Math.round(gpuStats.temp)}°C
                   </span>
+                </div>
+              )}
+
+              {gpuStats.vramUsed !== null && (
+                <div className="gpu-vram">
+                  <i className="nf nf-md-memory"></i>
+                  {(gpuStats.vramUsed / 1024).toFixed(1)}/{(gpuStats.vramTotal / 1024).toFixed(0)}GB
                 </div>
               )}
 
