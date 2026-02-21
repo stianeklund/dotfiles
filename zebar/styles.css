@@ -8,56 +8,38 @@
   --text-size: 12px;
   --icon-size: 12px;
 
-  --text-color-light: rgba(0 0 0 / 95%);
-  --text-color-dark: rgba(255 255 255 / 95%);
-
-  --icon-color-light: LightSteelBlue;
-  --icon-color-dark: rgba(115 130 175 / 95%);
-
-  --background-color-light: rgba(238 238 238 / 90%);
-  --background-color-dark: linear-gradient(
-    rgb(0 0 0 / 90%),
-    rgb(5 2 20 / 85%)
-  );
-}
-
-@media (prefers-color-scheme: light) {
-  body {
-    color: var(--text-color-light);
-  }
-
-  i {
-    color: var(--icon-color-light);
-  }
-
-  #root {
-    background: var(--background-color-light);
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    color: var(--text-color-dark);
-  }
-
-  i {
-    color: var(--icon-color-dark);
-  }
-
-  #root {
-    background: var(--background-color-dark);
-  }
-}
-
-i {
-  margin-right: 7px;
-  font-size: var(--icon-size);
+  /* Catppuccin Mocha palette */
+  --ctp-base: #1e1e2e;
+  --ctp-mantle: #181825;
+  --ctp-surface0: #313244;
+  --ctp-surface1: #45475a;
+  --ctp-surface2: #585b70;
+  --ctp-text: #cdd6f4;
+  --ctp-subtext0: #a6adc8;
+  --ctp-subtext1: #bac2de;
+  --ctp-blue: #89b4fa;
+  --ctp-lavender: #b4befe;
+  --ctp-sapphire: #74c7ec;
+  --ctp-green: #a6e3a1;
+  --ctp-yellow: #f9e2af;
+  --ctp-peach: #fab387;
+  --ctp-red: #f38ba8;
+  --ctp-mauve: #cba6f7;
+  --ctp-pink: #f5c2e7;
+  --ctp-teal: #94e2d5;
 }
 
 body {
+  color: var(--ctp-text);
   font-family: ui-monospace, monospace;
   font-size: var(--text-size);
   overflow: hidden;
+}
+
+i {
+  color: var(--ctp-blue);
+  margin-right: 5px;
+  font-size: var(--icon-size);
 }
 
 div,
@@ -74,7 +56,8 @@ body,
 }
 
 #root {
-  border-bottom: 1px solid rgb(255 255 255 / 5%);
+  background: var(--ctp-base);
+  border-bottom: 1px solid var(--ctp-surface0);
 }
 
 .app {
@@ -82,7 +65,7 @@ body,
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   height: 100%;
-  padding: 4px 1.5vw;
+  padding: 0 12px;
 }
 
 .left,
@@ -94,84 +77,132 @@ body,
 
 .center {
   justify-self: center;
+  color: var(--ctp-subtext1);
 }
 
 .right {
   justify-self: end;
+  gap: 4px;
 }
 
-.logo,
-.binding-mode,
-.tiling-direction,
-.paused-button,
+.logo {
+  margin-right: 10px;
+  color: var(--ctp-blue);
+}
+
+.workspaces {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.workspace {
+  background: var(--ctp-surface0);
+  padding: 2px 8px;
+  color: var(--ctp-subtext0);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-size);
+  transition: all 0.15s ease;
+
+  &.displayed {
+    background: var(--ctp-surface1);
+    color: var(--ctp-text);
+  }
+
+  &.focused,
+  &:hover {
+    background: var(--ctp-blue);
+    color: var(--ctp-base);
+  }
+}
+
+/* Right-side stat groups as pills */
 .network,
 .memory,
 .cpu,
 .cpu-temp,
 .gpu-temp,
 .gpu-vram,
-.battery {
-  margin-right: 20px;
-}
-
-.temp-cool {
-  color: #9ece6a;
-}
-
-.temp-warm {
-  color: #e0af68;
-}
-
-.temp-hot {
-  color: #f7768e;
-}
-
-.workspaces {
-  display: flex;
-  align-items: center;
-}
-
-.workspace {
-  background: rgb(255 255 255 / 5%);
-  margin-right: 4px;
-  padding: 4px 8px;
-  color: rgb(255 255 255 / 90%);
-  border: none;
-  border-radius: 2px;
-  cursor: pointer;
-
-  &.displayed {
-    background: rgb(255 255 255 / 15%);
-  }
-
-  &.focused,
-  &:hover {
-    background: rgb(75 115 255 / 50%);
-  }
+.battery,
+.weather {
+  background: var(--ctp-surface0);
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .binding-mode,
 .tiling-direction,
 .paused-button {
-  background: rgb(255 255 255 / 15%);
-  color: rgb(255 255 255 / 90%);
-  border-radius: 2px;
+  background: var(--ctp-surface1);
+  color: var(--ctp-text);
+  border-radius: 4px;
   line-height: 1;
-  padding: 4px 8px;
+  padding: 2px 8px;
   border: 0;
   cursor: pointer;
+  font-family: inherit;
+  font-size: var(--text-size);
+}
+
+.paused-button {
+  background: var(--ctp-red);
+  color: var(--ctp-base);
 }
 
 .binding-mode {
   margin-right: 4px;
 }
 
+.tiling-direction {
+  color: var(--ctp-lavender);
+}
+
+/* Temperature colors */
+.temp-cool {
+  color: var(--ctp-green);
+}
+
+.temp-warm {
+  color: var(--ctp-yellow);
+}
+
+.temp-hot {
+  color: var(--ctp-red);
+}
+
 .cpu .high-usage {
-  color: #900029;
+  color: var(--ctp-red);
+}
+
+.memory i {
+  color: var(--ctp-mauve);
+}
+
+.cpu i {
+  color: var(--ctp-sapphire);
+}
+
+.cpu-temp i {
+  color: var(--ctp-peach);
+}
+
+.gpu-temp i {
+  color: var(--ctp-green);
+}
+
+.gpu-vram i {
+  color: var(--ctp-teal);
 }
 
 .battery {
   position: relative;
+}
+
+.battery i {
+  color: var(--ctp-green);
 }
 
 .battery .charging-icon {
@@ -179,4 +210,12 @@ body,
   font-size: 7px;
   left: -8px;
   top: 3px;
+}
+
+.weather i {
+  color: var(--ctp-yellow);
+}
+
+.network i {
+  color: var(--ctp-blue);
 }
