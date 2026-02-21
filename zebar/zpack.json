@@ -53,7 +53,12 @@
       "includeFiles": ["*.html", "*.css"],
       "caching": {
         "defaultDuration": 604800,
-        "rules": []
+        "rules": [
+          {
+            "urlRegex": "localhost:8085",
+            "duration": 0
+          }
+        ]
       },
       "privileges": {
         "shellCommands": [

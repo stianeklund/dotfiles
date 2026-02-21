@@ -60,7 +60,7 @@
       // Fetch CPU temp via LibreHardwareMonitor HTTP API.
       async function fetchCpuTemp() {
         try {
-          const res = await fetch('http://localhost:8085/data.json');
+          const res = await fetch(`http://localhost:8085/data.json?t=${Date.now()}`);
           const data = await res.json();
           const sensor = findSensor(data, 'CPU Package')
             || findSensor(data, 'Core (Tctl/Tdie)');

@@ -48,7 +48,7 @@ gaps:
 
   # Gap between windows and the screen edge.
   outer_gap:
-    top: '40px'
+    top: '28px'
     right: '4px'
     bottom: '4px'
     left: '4px'
@@ -246,7 +246,7 @@ keybindings:
     bindings: ['alt+shift+e']
 
   # Re-evaluate configuration file.
-  - commands: ['wm-reload-config']
+  - commands: ['wm-reload-config', 'shell-exec cmd /C "taskkill /IM zebar.exe /F && timeout /t 1 /nobreak >nul && start zebar"']
     bindings: ['alt+shift+r']
 
   # Redraw all windows.
