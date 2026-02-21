@@ -37,34 +37,18 @@
 
       createRoot(document.getElementById('root')).render(<App />);
 
-      // Recursively find a sensor node by name in the LHM JSON tree.
-      function findSensor(node, name) {
-        if (node.Text && node.Text.includes(name) && node.Value) {
-          return node;
-        }
-        if (node.Children) {
-          for (const child of node.Children) {
-            const found = findSensor(child, name);
-            if (found) return found;
-          }
-        }
-        return null;
-      }
-
-      // Parse temperature value string like "45.0 °C" to a number.
-      function parseTempValue(str) {
-        const val = parseFloat(str);
-        return isNaN(val) ? null : val;
-      }
-
-      // Fetch CPU temp via LibreHardwareMonitor HTTP API.
+      // Fetch CPU temp via LibreHardwareMonitor HTTP API using PowerShell.
       async function fetchCpuTemp() {
         try {
-          const res = await fetch(`http://localhost:8085/data.json?t=${Date.now()}`);
-          const data = await res.json();
-          const sensor = findSensor(data, 'CPU Package')
-            || findSensor(data, 'Core (Tctl/Tdie)');
-          return sensor ? parseTempValue(sensor.Value) : null;
+          const result = await zebar.shellExec('powershell', [
+            '-NoProfile', '-Command',
+            "$d = Invoke-RestMethod -Uri 'http://localhost:8085/data.json';",
+            "function Find($n,$name){if($n.Text -match $name -and $n.Value){return $n.Value}",
+            "if($n.Children){foreach($c in $n.Children){$r=Find $c $name;if($r){return $r}}}return $null}",
+            "$r = Find $d 'CPU Package'; if(!$r){$r = Find $d 'Tctl/Tdie'}; $r",
+          ].join(' '));
+          const val = parseFloat(result.stdout.trim());
+          return isNaN(val) ? null : val;
         } catch {
           return null;
         }

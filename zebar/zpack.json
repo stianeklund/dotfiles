@@ -65,6 +65,10 @@
           {
             "program": "nvidia-smi",
             "argsRegex": ".*"
+          },
+          {
+            "program": "powershell",
+            "argsRegex": ".*Invoke-RestMethod.*localhost:8085.*"
           }
         ]
       },
