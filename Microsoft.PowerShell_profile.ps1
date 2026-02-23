@@ -110,7 +110,8 @@ function New-EditablePr {
 
     # 6) Build title/header/body-file
     $summary = jsummary
-    $title   = "$($jiraIssue): $($summary)"
+    $prefix  = if ($branch -match '(?i)backport') { '[Backport] ' } else { '' }
+    $title   = "$($prefix)$($jiraIssue): $($summary)"
     $link    = "[#$jiraIssue](https://initialforce.atlassian.net/browse/$jiraIssue)"
     $header  = @"
 $link
