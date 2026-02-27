@@ -11,6 +11,7 @@ function Link {
     $fullSrc = Join-Path $DotfilesDir $Src
     if (Test-Path $Dest) {
         $bak = "$Dest.bak"
+        if (Test-Path $bak) { Remove-Item -Recurse -Force $bak }
         Write-Host "  backup: $Dest -> $bak"
         Move-Item -Force $Dest $bak
     }
