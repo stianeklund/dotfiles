@@ -165,3 +165,6 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[safe]
+	directory = G:/dev/ARCI_KNS_Android
+	directory = G:/dev/ARCI_KNS_Server

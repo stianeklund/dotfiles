@@ -37,62 +37,43 @@
 
       createRoot(document.getElementById('root')).render(<App />);
 
-      // Fetch CPU temp via LibreHardwareMonitor HTTP API using PowerShell.
-      async function fetchCpuTemp() {
+      // Fetch CPU + GPU stats from LHM HTTP API in a single PowerShell call.
+      async function fetchLhmStats() {
         try {
           const result = await zebar.shellExec('powershell', [
             '-NoProfile', '-Command',
             "$d = Invoke-RestMethod -Uri 'http://localhost:8085/data.json';",
-            "function Find($n,$name){if($n.Text -match $name -and $n.Value){return $n.Value}",
-            "if($n.Children){foreach($c in $n.Children){$r=Find $c $name;if($r){return $r}}}return $null}",
-            "$r = Find $d 'CPU Package'; if(!$r){$r = Find $d 'Tctl/Tdie'}; $r",
+            "function Find($n,$name,$unit){if($n.Text -match $name -and $n.Value -and (!$unit -or $n.Value -match $unit)){return $n.Value}",
+            "if($n.Children){foreach($c in $n.Children){$r=Find $c $name $unit;if($r){return $r}}}return $null}",
+            "function Val($s){if($s){[float]($s -replace '[^0-9.,]','' -replace ',','.')}else{$null}}",
+            "$cpu = Val (Find $d 'CPU Package' '°'); if(!$cpu){$cpu = Val (Find $d 'Tctl/Tdie' '°')};",
+            "$gt = Val (Find $d 'GPU Core' '°');",
+            "$gmu = Val (Find $d 'GPU Memory Used' 'MB');",
+            "$gmt = Val (Find $d 'GPU Memory Total' 'MB');",
+            "\"$cpu|$gt|$gmu|$gmt\"",
           ].join(' '));
-          const val = parseFloat(result.stdout.trim());
-          return isNaN(val) ? null : val;
+          const [cpuTemp, gpuTemp, vramUsed, vramTotal] = result.stdout.trim().split('|').map(v => {
+            const n = parseFloat(v);
+            return isNaN(n) ? null : n;
+          });
+          return { cpuTemp, gpuTemp, vramUsed, vramTotal };
         } catch {
-          return null;
-        }
-      }
-
-      // Fetch GPU temp and VRAM via nvidia-smi.
-      async function fetchGpuStats() {
-        try {
-          const result = await zebar.shellExec(
-            'nvidia-smi',
-            '--query-gpu=temperature.gpu,memory.used,memory.total --format=csv,noheader,nounits',
-          );
-          const [temp, used, total] = result.stdout.trim().split(', ');
-          return {
-            temp: parseFloat(temp) || null,
-            vramUsed: parseFloat(used) || null,
-            vramTotal: parseFloat(total) || null,
-          };
-        } catch {
-          return { temp: null, vramUsed: null, vramTotal: null };
+          return { cpuTemp: null, gpuTemp: null, vramUsed: null, vramTotal: null };
         }
       }
 
       function App() {
         const [output, setOutput] = useState(providers.outputMap);
-        const [cpuTemp, setCpuTemp] = useState(null);
-        const [gpuStats, setGpuStats] = useState({ temp: null, vramUsed: null, vramTotal: null });
+        const [lhm, setLhm] = useState({ cpuTemp: null, gpuTemp: null, vramUsed: null, vramTotal: null });
 
         useEffect(() => {
           providers.onOutput(() => setOutput(providers.outputMap));
         }, []);
 
-        // Poll temperatures every 5 seconds.
+        // Poll LHM stats every 3 seconds.
         useEffect(() => {
-          async function updateTemps() {
-            const [cpu, gpu] = await Promise.all([
-              fetchCpuTemp(),
-              fetchGpuStats(),
-            ]);
-            setCpuTemp(cpu);
-            setGpuStats(gpu);
-          }
-          updateTemps();
-          const interval = setInterval(updateTemps, 3000);
+          fetchLhmStats().then(setLhm);
+          const interval = setInterval(() => fetchLhmStats().then(setLhm), 3000);
           return () => clearInterval(interval);
         }, []);
 
@@ -270,28 +251,28 @@
                 </div>
               )}
 
-              {cpuTemp !== null && (
+              {lhm.cpuTemp !== null && (
                 <div className="cpu-temp">
                   <i className="nf nf-md-thermometer"></i>
-                  <span className={getTempClass(cpuTemp)}>
-                    {Math.round(cpuTemp)}°C
+                  <span className={getTempClass(lhm.cpuTemp)}>
+                    {Math.round(lhm.cpuTemp)}°C
                   </span>
                 </div>
               )}
 
-              {gpuStats.temp !== null && (
+              {lhm.gpuTemp !== null && (
                 <div className="gpu-temp">
                   <i className="nf nf-md-expansion_card"></i>
-                  <span className={getTempClass(gpuStats.temp)}>
-                    {Math.round(gpuStats.temp)}°C
+                  <span className={getTempClass(lhm.gpuTemp)}>
+                    {Math.round(lhm.gpuTemp)}°C
                   </span>
                 </div>
               )}
 
-              {gpuStats.vramUsed !== null && (
+              {lhm.vramUsed !== null && (
                 <div className="gpu-vram">
                   <i className="nf nf-md-memory"></i>
-                  {(gpuStats.vramUsed / 1024).toFixed(1)}/{(gpuStats.vramTotal / 1024).toFixed(0)}GB
+                  {(lhm.vramUsed / 1024).toFixed(1)}/{(lhm.vramTotal / 1024).toFixed(0)}GB
                 </div>
               )}
 
