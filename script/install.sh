@@ -34,6 +34,8 @@ if [ -d "$WIN_HOME" ]; then
     if [ -d "$PS_DIR" ]; then
         link Microsoft.PowerShell_profile.ps1 "$PS_DIR/Microsoft.PowerShell_profile.ps1"
     fi
+    link glazewm/config.yaml "$WIN_HOME/.glzr/glazewm/config.yaml"
+    link zebar "$WIN_HOME/.glzr/zebar"
 fi
 
 # Fish

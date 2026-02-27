@@ -30,6 +30,8 @@ Link "_vimrc"                          "$HOME\_vimrc"
 Link "nvim\init.vim"                   "$HOME\AppData\Local\nvim\init.vim"
 Link "starship.toml"                   "$HOME\.config\starship.toml"
 Link "Microsoft.PowerShell_profile.ps1" "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+Link "glazewm\config.yaml"             "$HOME\.glzr\glazewm\config.yaml"
+Link "zebar"                           "$HOME\.glzr\zebar"
 
 # Starship
 if (-not (Get-Command starship -ErrorAction SilentlyContinue)) {
