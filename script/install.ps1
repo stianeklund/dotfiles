@@ -31,10 +31,16 @@ Link "nvim\init.vim"                   "$HOME\AppData\Local\nvim\init.vim"
 Link "starship.toml"                   "$HOME\.config\starship.toml"
 Link "Microsoft.PowerShell_profile.ps1" "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
 Link "glazewm\config.yaml"             "$HOME\.glzr\glazewm\config.yaml"
+Link "zebar\settings.json"             "$HOME\.glzr\zebar\settings.json"
+Link "zebar\.marketplace\glzr-io.starter.json" "$HOME\.glzr\zebar\.marketplace\glzr-io.starter.json"
 $ZebarPack = "$env:APPDATA\zebar\downloads\glzr-io.starter@0.0.0"
-Link "zebar\with-glazewm.html"         "$ZebarPack\with-glazewm.html"
-Link "zebar\styles.css"                "$ZebarPack\styles.css"
 Link "zebar\zpack.json"                "$ZebarPack\zpack.json"
+Link "zebar\styles.css"                "$ZebarPack\styles.css"
+Link "zebar\with-glazewm.html"         "$ZebarPack\with-glazewm.html"
+Link "zebar\vanilla.html"              "$ZebarPack\vanilla.html"
+Link "zebar\with-komorebi.html"        "$ZebarPack\with-komorebi.html"
+Link "zebar\README.md"                 "$ZebarPack\README.md"
+Link "zebar\resources"                 "$ZebarPack\resources"
 
 # Starship
 if (-not (Get-Command starship -ErrorAction SilentlyContinue)) {

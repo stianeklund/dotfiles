@@ -35,10 +35,16 @@ if [ -d "$WIN_HOME" ]; then
         link Microsoft.PowerShell_profile.ps1 "$PS_DIR/Microsoft.PowerShell_profile.ps1"
     fi
     link glazewm/config.yaml "$WIN_HOME/.glzr/glazewm/config.yaml"
+    link zebar/settings.json "$WIN_HOME/.glzr/zebar/settings.json"
+    link zebar/.marketplace/glzr-io.starter.json "$WIN_HOME/.glzr/zebar/.marketplace/glzr-io.starter.json"
     ZEBAR_PACK="$WIN_HOME/AppData/Roaming/zebar/downloads/glzr-io.starter@0.0.0"
-    link zebar/with-glazewm.html "$ZEBAR_PACK/with-glazewm.html"
-    link zebar/styles.css "$ZEBAR_PACK/styles.css"
     link zebar/zpack.json "$ZEBAR_PACK/zpack.json"
+    link zebar/styles.css "$ZEBAR_PACK/styles.css"
+    link zebar/with-glazewm.html "$ZEBAR_PACK/with-glazewm.html"
+    link zebar/vanilla.html "$ZEBAR_PACK/vanilla.html"
+    link zebar/with-komorebi.html "$ZEBAR_PACK/with-komorebi.html"
+    link zebar/README.md "$ZEBAR_PACK/README.md"
+    link zebar/resources "$ZEBAR_PACK/resources"
 fi
 
 # Fish
