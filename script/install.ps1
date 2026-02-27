@@ -18,7 +18,13 @@ function Link {
     if ($destDir -and -not (Test-Path $destDir)) {
         New-Item -ItemType Directory -Path $destDir | Out-Null
     }
-    New-Item -ItemType SymbolicLink -Path $Dest -Target $fullSrc | Out-Null
+    # Use junctions for directories (no special permissions needed),
+    # symlinks for files.
+    if (Test-Path $fullSrc -PathType Container) {
+        cmd /c mklink /J "$Dest" "$fullSrc" | Out-Null
+    } else {
+        New-Item -ItemType SymbolicLink -Path $Dest -Target $fullSrc | Out-Null
+    }
     Write-Host "  linked: $Dest -> $fullSrc"
 }
 
@@ -49,6 +55,22 @@ if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
     $ans = Read-Host "Install neovim? [y/N]"
     if ($ans -match '^[yY]$') {
         winget install --id Neovim.Neovim -e
+    }
+}
+
+# GlazeWM
+if (-not (Get-Command glazewm -ErrorAction SilentlyContinue)) {
+    $ans = Read-Host "Install GlazeWM? [y/N]"
+    if ($ans -match '^[yY]$') {
+        winget install --id glzr-io.glazewm -e
+    }
+}
+
+# Zebar
+if (-not (Get-Command zebar -ErrorAction SilentlyContinue)) {
+    $ans = Read-Host "Install Zebar? [y/N]"
+    if ($ans -match '^[yY]$') {
+        winget install --id glzr-io.zebar -e
     }
 }
 
