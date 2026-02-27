@@ -19,12 +19,12 @@ function Link {
     if ($destDir -and -not (Test-Path $destDir)) {
         New-Item -ItemType Directory -Path $destDir | Out-Null
     }
-    # Use junctions for directories (no special permissions needed),
-    # symlinks for files.
+    # Use junctions for directories and hardlinks for files.
+    # Neither requires Developer Mode or special permissions on Windows.
     if (Test-Path $fullSrc -PathType Container) {
         cmd /c mklink /J "$Dest" "$fullSrc" | Out-Null
     } else {
-        New-Item -ItemType SymbolicLink -Path $Dest -Target $fullSrc | Out-Null
+        New-Item -ItemType HardLink -Path $Dest -Target $fullSrc | Out-Null
     }
     Write-Host "  linked: $Dest -> $fullSrc"
 }
