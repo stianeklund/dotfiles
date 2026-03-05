@@ -37,11 +37,8 @@ Link "_vimrc"                          "$HOME\_vimrc"
 Link "nvim\init.vim"                   "$HOME\AppData\Local\nvim\init.vim"
 Link "starship.toml"                   "$HOME\.config\starship.toml"
 Link "Microsoft.PowerShell_profile.ps1" "$HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-Link "glazewm\config.yaml"             "$HOME\.glzr\glazewm\config.yaml"
-Link "zebar\settings.json"             "$HOME\.glzr\zebar\settings.json"
-Link "zebar\.marketplace"              "$HOME\.glzr\zebar\.marketplace"
-Link "zebar\.migrations.json"          "$env:APPDATA\zebar\.migrations.json"
-Link "zebar\starter"                   "$env:APPDATA\zebar\downloads\glzr-io.starter@0.0.0"
+Link "glazewm"                          "$HOME\.glzr\glazewm"
+Link "zebar"                           "$HOME\.glzr\zebar"
 
 # Starship
 if (-not (Get-Command starship -ErrorAction SilentlyContinue)) {
