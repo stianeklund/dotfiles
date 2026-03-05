@@ -7,14 +7,7 @@ function fish_user_key_bindings
     end
 end
 
-# WSL-aware git wrapper
-function git --wraps git
-    if string match -qr "^/mnt/[A-Za-z]/" (pwd -P)
-        command git.exe -c core.editor=nvim.exe $argv
-    else
-        command git $argv
-    end
-end
+# Using WSL git for all paths (git.exe breaks worktrees with WSL paths)
 
 # Aliases as functions
 function lg

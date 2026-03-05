@@ -4,10 +4,6 @@
 
 [credential]
     helper = /usr/local/bin/git-credential-manager
-
-[remote "origin"]
-	receivepack = git receive-pack
-
 [github]
 	user = stianeklund
 
@@ -140,6 +136,10 @@
 
     #subtree add
     sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+    # worktree add with auto-fix for WSL/Windows path compat
+    wta = "!f() { git worktree add \"$@\" && git fix-worktree-paths \"$1\"; }; f"
+    # fix all worktree paths in current repo
+    wt-fix = "!git fix-worktree-paths --all"
     # initial empty commit
     empty = "!git commit -am\"[empty] Initial commit\" --allow-empty"
 	addcw = -c interactive.diffFilter=\"git diff --color-words\" add -p
