@@ -10,7 +10,7 @@ end
 # WSL-aware git wrapper
 function git --wraps git
     if string match -qr "^/mnt/[A-Za-z]/" (pwd -P)
-        git.exe $argv
+        command git.exe -c core.editor=nvim.exe $argv
     else
         command git $argv
     end
