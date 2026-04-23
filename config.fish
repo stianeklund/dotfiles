@@ -104,6 +104,23 @@ function dos2unix-diff
     end
 end
 
+function venv --description "Create and activate a new virtual environment"
+    echo "Creating virtual environment in "(pwd)"/.venv"
+    python3 -m venv .venv --upgrade-deps
+    source .venv/bin/activate.fish
+
+    # Append .venv to the Git exclude file, but only if it's not
+    # already there.
+    if test -e .git
+        set line_to_append ".venv"
+        set target_file ".git/info/exclude"
+
+        if not grep --quiet --fixed-strings --line-regexp "$line_to_append" "$target_file" 2>/dev/null
+            echo "$line_to_append" >> "$target_file"
+        end
+    end
+end
+
 # Initialize starship prompt
 starship init fish | source
 
@@ -130,3 +147,4 @@ set -gx NODE_NOTIFIER_DISABLED 1
 if test -f ~/.config/fish/conf.d/secrets.fish
     source ~/.config/fish/conf.d/secrets.fish
 end
+set -gx NODE_OPTIONS "--dns-result-order=ipv4first"
