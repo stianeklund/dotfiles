@@ -66,6 +66,9 @@ autocmd BufWinLeave * call clearmatches()
 " Mapleader from \ to space
 let mapleader="\<Space>"
 
+" Clear search highlighting on Escape
+nmap <Esc> :nohlsearch<CR>
+
 " Use leader for frequently used actions
 " <Space>w to save file
 nnoremap <Leader>w :w<CR>
@@ -82,3 +85,13 @@ vmap <Leader>P "+P
 
 " Easymotion (for fast navigation)
 map <Leader><Leader> <Plug>(easymotion-prefix)
+
+" File explorer
+nnoremap <Leader>e :Sexplore<CR>
+nnoremap <Leader>E :Explore<CR>
+
+" Netrw: open files in previous window instead of split
+let g:netrw_browse_split = 4
+
+" Reset netrw_chgwin to avoid opening in wrong window after using :Lex
+let g:netrw_chgwin = -1
