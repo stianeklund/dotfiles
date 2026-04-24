@@ -128,7 +128,7 @@ set -x PATH \
     $PATH
 
 set -x DISPLAY 127.0.0.1:0.0
-set -x EDITOR /usr/bin/nvim
+set -x EDITOR $HOME/.local/bin/nvim
 
 # Claude settings
 set -x CLAUDE_APP_PATH /usr/bin/claude
@@ -141,3 +141,8 @@ if test -f ~/.config/fish/conf.d/secrets.fish
     source ~/.config/fish/conf.d/secrets.fish
 end
 set -gx NODE_OPTIONS "--dns-result-order=ipv4first"
+
+ntm init fish | source
+
+# wt (git worktree manager) shell integration
+wt shell-init fish | source

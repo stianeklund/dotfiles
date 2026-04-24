@@ -25,6 +25,7 @@ link nvim/init.vim "$HOME/.config/nvim/init.vim"
 link .gitmessage "$HOME/.gitmessage"
 link starship.toml "$HOME/.config/starship.toml"
 link fish_plugins "$HOME/.config/fish/fish_plugins"
+link .claude/statusline.sh "$HOME/.claude/statusline.sh"
 
 # Windows-side configs (only link if the target dirs exist)
 WIN_HOME="/mnt/c/Users/${USER}"
