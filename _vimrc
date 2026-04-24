@@ -97,6 +97,18 @@ vmap <Leader>P "+P
 " Easymotion (for fast navigation)
 map <Leader><Leader> <Plug>(easymotion-prefix)
 
+" File explorer (vim fallback)
+if !has('nvim')
+    nnoremap <Leader>e :Sexplore<CR>
+    nnoremap <Leader>E :Explore<CR>
+
+    " Netrw: open files in previous window instead of split
+    let g:netrw_browse_split = 4
+
+    " Reset netrw_chgwin to avoid opening in wrong window after using :Lex
+    let g:netrw_chgwin = -1
+endif
+
 " LSP configuration (Neovim only)
 if has('nvim')
 lua << EOF
