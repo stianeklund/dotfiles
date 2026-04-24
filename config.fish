@@ -9,7 +9,12 @@ end
 
 # Using WSL git for all paths (git.exe breaks worktrees with WSL paths)
 
+
 # Aliases as functions
+function fd
+    command fdfind $argv
+end
+
 function lg
     /mnt/c/ProgramData/chocolatey/lib/lazygit/tools/lazygit.exe $argv
 end
