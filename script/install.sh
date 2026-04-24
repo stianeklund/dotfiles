@@ -27,6 +27,22 @@ link starship.toml "$HOME/.config/starship.toml"
 link fish_plugins "$HOME/.config/fish/fish_plugins"
 link .claude/statusline.sh "$HOME/.claude/statusline.sh"
 
+# Patch ~/.claude/settings.json to use bash for the statusline (sh/dash lacks += syntax)
+CLAUDE_SETTINGS="$HOME/.claude/settings.json"
+if command -v jq >/dev/null 2>&1; then
+    if [ -f "$CLAUDE_SETTINGS" ]; then
+        tmp=$(mktemp)
+        jq --arg cmd "bash $HOME/.claude/statusline.sh" \
+            '.statusLine = {"type": "command", "command": $cmd}' \
+            "$CLAUDE_SETTINGS" > "$tmp" && mv "$tmp" "$CLAUDE_SETTINGS"
+        echo "  patched: $CLAUDE_SETTINGS statusLine.command -> bash"
+    else
+        echo "  skipped: $CLAUDE_SETTINGS not found (open Claude Code first to generate it)"
+    fi
+else
+    echo "  skipped: jq not found, manually set statusLine.command to: bash $HOME/.claude/statusline.sh"
+fi
+
 # Windows-side configs (only link if the target dirs exist)
 WIN_HOME="/mnt/c/Users/${USER}"
 if [ -d "$WIN_HOME" ]; then
